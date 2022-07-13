@@ -4,9 +4,14 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <iostream>
-
+#include"Input\Input.h"
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 
 int main() {
+
+	Input::InitializeInput();
+	Input::BindKey(EKeyBind::A,'A');
+
 
 	char server_ip_addr[32];
 	int port_number;
@@ -17,7 +22,7 @@ int main() {
 	if (WSAStartup(MAKEWORD(2, 0), &wsa_data) != 0) {
 		std::cerr << "Winsockの初期化失敗(WSAStartup)" << std::endl;
 	}
-
+	
 	// ユーザ入力
 	std::cout << "接続先IPアドレスを入力してください(xxx.xxx.xxx.xxx)" << std::endl;
 	std::cin >> server_ip_addr;
@@ -29,9 +34,11 @@ int main() {
 	memset(&dst_addr, 0, sizeof(dst_addr));
 	dst_addr.sin_port = htons(port_number);		// ポート番号
 	dst_addr.sin_family = AF_INET;				// AF_INETはipv4を示す
+	//dst_addr.sin_addr.S_un.S_addr = inet_addr(server_ip_addr);
+	
 
 	// 引数は (1) Type(ipv4 or v6) (2) IPアドレスのテキスト形式 (3) IPアドレスのバイナリ形式【(2)→(3)に変換】
-	inet_pton(dst_addr.sin_family, server_ip_addr, &dst_addr.sin_addr.s_addr);
+	//inet_pton(dst_addr.sin_family, server_ip_addr, &dst_addr.sin_addr.s_addr);
 
 	// AF_INETはipv4のIPプロトコル & SOCK_STREAMはTCPプロトコル
 	int dst_socket = socket(AF_INET, SOCK_DGRAM, 0);
@@ -48,8 +55,11 @@ int main() {
 	char send_buf1[256], send_buf2[256];
 	char recv_buf[256];
 
+	
+
 	while (1) {
 
+		
 		std::cout << "何か文字をを入力してください" << std::endl;
 		std::cin >> send_buf1;
 
@@ -57,6 +67,8 @@ int main() {
 		send(dst_socket, send_buf1, 256, 0);
 		//send(dst_socket, send_buf2, 256, 0);
 		
+		
+
 	}
 
 	// 解放処理

@@ -2,5 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main_soket_asynchronous_client.cpp" />
+    <ClCompile Include="Input\Input.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Input\Input.h" />
   </ItemGroup>
 </Project>

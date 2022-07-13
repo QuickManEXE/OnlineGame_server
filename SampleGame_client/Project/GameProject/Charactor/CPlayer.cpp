@@ -16,10 +16,12 @@ collision(&pos,28.0f,this,eLayer_Player)
 	//プレイヤーの初期位置
 	pos = p;
 
+	
 }
 
 CPlayer::~CPlayer()
 {
+	
 }
 
 void CPlayer::Update()
@@ -58,7 +60,7 @@ void CPlayer::Update()
 	//new CPlayer(pos);				//同じ場所にプレイヤーを生成する
 	
 
-
+	
 	
 }
 

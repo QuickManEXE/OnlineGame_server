@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Input\Input.cpp" />
     <ClCompile Include="main_soket_asynchronous_client.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Input\Input.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

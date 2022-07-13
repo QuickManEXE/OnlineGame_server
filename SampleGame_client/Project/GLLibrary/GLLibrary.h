@@ -11,6 +11,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <windows.h>
+#include<iostream>
+//#include <ws2tcpip.h>
+
+
 
 #include "GLLibrary/GL.h"
 

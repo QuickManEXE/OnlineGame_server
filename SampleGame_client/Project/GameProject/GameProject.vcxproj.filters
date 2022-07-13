@@ -40,6 +40,7 @@
     <ClInclude Include="System\TaskManager.h">
       <Filter>System</Filter>
     </ClInclude>
+    <ClInclude Include="Soket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -76,6 +77,7 @@
     <ClCompile Include="System\TaskManager.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="Soket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
