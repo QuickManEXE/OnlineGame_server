@@ -18,19 +18,19 @@ void Soket::Init()
 	// ソケットの初期設定はブロッキングモードです。
 	u_long val = 1;
 	ioctlsocket(sock, FIONBIO, &val);
+	
+	memset(buf, 0, sizeof(buf));
 }
 
 void Soket::Run()
 {
 	int n;
 
-	memset(buf, 0, sizeof(buf));
-
 	n = recv(sock, buf, sizeof(buf), 0);
 	if (n < 1) {
 		if (WSAGetLastError() == WSAEWOULDBLOCK) {
 			// まだ来ない。
-			printf("MADA KONAI\n");
+			//printf("MADA KONAI\n");
 		}
 		else {
 			printf("error : 0x%x\n", WSAGetLastError());
