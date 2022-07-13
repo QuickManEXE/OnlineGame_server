@@ -26,7 +26,9 @@ void Soket::Run()
 {
 	int n;
 
-	n = recv(sock, buf, sizeof(buf), 0);
+	//n = recv(sock, buf, sizeof(buf), 0);
+	n = recv(sock, (char*)(&pos), sizeof(pos), 0);
+	//printf("%d\n", n);
 	if (n < 1) {
 		if (WSAGetLastError() == WSAEWOULDBLOCK) {
 			// ‚Ü‚¾—ˆ‚È‚¢B
@@ -39,7 +41,7 @@ void Soket::Run()
 	}
 	else {
 		printf("received data\n");
-		printf("%s\n", buf);
+		//printf("%s\n", buf);
 
 	}
 

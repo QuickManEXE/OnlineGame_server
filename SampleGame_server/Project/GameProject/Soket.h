@@ -12,6 +12,8 @@ public:
 
 	char buf[2048];
 
+	CVector3D pos;
+
 public:
 	void Init();
 	void Run();

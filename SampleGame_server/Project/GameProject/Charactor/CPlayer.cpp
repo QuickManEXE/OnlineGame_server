@@ -28,6 +28,9 @@ CPlayer::~CPlayer()
 
 void CPlayer::Update()
 {
+	
+	soket.pos = CVector3D::zero;
+	soket.Run();
 	//更新処理
 	//printf("ここの処理を繰り返し実行しています");
 	//if との組み合わせ
@@ -61,8 +64,8 @@ void CPlayer::Update()
 	//プレイヤー生成 x　y
 	//new CPlayer(pos);				//同じ場所にプレイヤーを生成する
 	
-
-	soket.Run();
+	pos += CVector2D(soket.pos.x,soket.pos.y);
+	
 	
 }
 
