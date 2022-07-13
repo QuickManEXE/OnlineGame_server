@@ -17,6 +17,8 @@ public:
 
 	char send_buf1[256], send_buf2[256];
 	char recv_buf[256];
+
+	CVector3D pos;
 public:
 	Soket();
 	void Init();

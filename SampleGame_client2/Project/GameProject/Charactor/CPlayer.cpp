@@ -17,7 +17,7 @@ collision(&pos,28.0f,this,eLayer_Player)
 	pos = p;
 
 	soket.Init();
-	soket.Run();
+	//soket.Run();
 }
 
 CPlayer::~CPlayer()
@@ -27,6 +27,8 @@ CPlayer::~CPlayer()
 
 void CPlayer::Update()
 {
+
+	soket.pos = CVector3D::zero;
 	//更新処理
 	//printf("ここの処理を繰り返し実行しています");
 	//if との組み合わせ
@@ -37,11 +39,17 @@ void CPlayer::Update()
 	
 	//プレイヤーの位置
 	//pos.x 横の位置　	pos.y　縦の位置
-	if (HOLD(CInput::eRight)) {
+	/*if (HOLD(CInput::eRight)) {
 		pos.x += 4;
 	}
 	if (HOLD(CInput::eLeft)) {
 		pos.x -= 4;
+	}*/
+	if (HOLD(CInput::eRight)) {
+		soket.pos.x += 4;
+	}
+	if (HOLD(CInput::eLeft)) {
+		soket.pos.x -= 4;
 	}
 
 

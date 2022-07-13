@@ -1,6 +1,7 @@
 #include "Soket.h"
 #include<iostream>
 
+
 #pragma comment(lib, "Ws2_32.lib")
 
 Soket::Soket()
@@ -24,11 +25,14 @@ void Soket::Init()
 	memset(&dst_addr, 0, sizeof(dst_addr));
 	dst_addr.sin_port = htons(port_number);		// ポート番号
 	dst_addr.sin_family = AF_INET;				// AF_INETはipv4を示す
-	dst_addr.sin_addr.S_un.S_addr = inet_addr(server_ip_addr);
+	//dst_addr.sin_addr.S_un.S_addr = inet_addr(server_ip_addr);
 
+	// 引数は (1) Type(ipv4 or v6) (2) IPアドレスのテキスト形式 (3) IPアドレスのバイナリ形式【(2)→(3)に変換】
+	inet_pton(dst_addr.sin_family, server_ip_addr, &dst_addr.sin_addr.s_addr);
+	
 	
 	// AF_INETはipv4のIPプロトコル & SOCK_STREAMはTCPプロトコル
-	int dst_socket = socket(AF_INET, SOCK_DGRAM, 0);
+	dst_socket = socket(AF_INET, SOCK_DGRAM, 0);
 
 	// 接続処理
 	if (connect(dst_socket, (struct sockaddr*)&dst_addr, sizeof(dst_addr))) {
@@ -43,17 +47,17 @@ void Soket::Init()
 void Soket::Run()
 {
 
-	std::cout << "何か文字をを入力してください" << std::endl;
+	//std::cout << "何か文字をを入力してください" << std::endl;
 	//std::cin >> send_buf1;
 
 	//std::cout << send_buf1 << std::endl;
 
 	// Packetの送信(SOCKET, Buffer, Datasize, 送信方法)
 	//send(dst_socket, send_buf1, 256, 0);
-	send(dst_socket, "a", 256, 0);
+	//send(dst_socket, "a", 256, 0);
 	//sendto(dst_socket, "HELLO", 5, 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
 
-
+	send(dst_socket, (char*)(&pos), sizeof(pos), 0);
 
 }
 
