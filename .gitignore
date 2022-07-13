@@ -3,7 +3,7 @@
 Debug/
 Release/
 
-/BaseProject/Game/GameProject.exe
-/BaseProject/Game/GameProject.exp
-/BaseProject/Game/GameProject.lib
-/BaseProject/Game/GameProject.pdb
+Game.exe
+Game.exp
+Game.lib
+Game.pdb
