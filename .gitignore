@@ -3,7 +3,7 @@
 Debug/
 Release/
 
-Game.exe
-Game.exp
-Game.lib
-Game.pdb
+GameProject.exe
+GameProject.exp
+GameProject.lib
+GameProject.pdb
