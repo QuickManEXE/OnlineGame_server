@@ -2,6 +2,8 @@
 #include "../Bullet/CBullet.h"
 #include "../Charactor/CEnemy.h"
 #include "../Effect/CEffect.h"
+
+
 using namespace Player;
 CPlayer::CPlayer(const float x, const float y):CPlayer(CVector2D(x,y)) {
 }
@@ -16,10 +18,12 @@ collision(&pos,28.0f,this,eLayer_Player)
 	//プレイヤーの初期位置
 	pos = p;
 
+	soket.Init();
 }
 
 CPlayer::~CPlayer()
 {
+	soket.finalize();
 }
 
 void CPlayer::Update()
@@ -58,7 +62,7 @@ void CPlayer::Update()
 	//new CPlayer(pos);				//同じ場所にプレイヤーを生成する
 	
 
-
+	soket.Run();
 	
 }
 
