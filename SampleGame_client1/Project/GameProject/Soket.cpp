@@ -42,16 +42,16 @@ void Soket::Init()
 
 	receve_pos = CVector3D::zero;
 
-	// 接続処理
-	if (connect(dst_socket, (struct sockaddr*)&dst_addr, sizeof(dst_addr))) {
-		std::cerr << "接続失敗(サーバIPアドレス" << server_ip_addr << "/接続先ポート番号" << port_number << std::endl;
-		exit(0);
-	}
+	//// 接続処理
+	//if (connect(dst_socket, (struct sockaddr*)&dst_addr, sizeof(dst_addr))) {
+	//	std::cerr << "接続失敗(サーバIPアドレス" << server_ip_addr << "/接続先ポート番号" << port_number << std::endl;
+	//	exit(0);
+	//}
 
 	std::cout << "接続完了(サーバIPアドレス" << server_ip_addr << "/接続先ポート番号" << port_number << std::endl << std::endl;
 	
-	FD_ZERO(&readfds);
-	FD_SET(dst_socket, &readfds);
+	//FD_ZERO(&readfds);
+	//FD_SET(dst_socket, &readfds);
 }
 
 void Soket::Run()
@@ -66,11 +66,17 @@ void Soket::Run()
 	//send(dst_socket, send_buf1, 256, 0);
 	//send(dst_socket, "a", 256, 0);
 	//sendto(dst_socket, "HELLO", 5, 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
+	//send(dst_socket, (char*)(&pos), sizeof(pos), 0);
 
-	send(dst_socket, (char*)(&pos), sizeof(pos), 0);
-
-	
-
+	static int a = 0;
+	sockaddr_in fromaddr;
+	int addrlen;
+	int n = recv(dst_socket, (char*)(&pos), sizeof(pos), 0);
+	if (n != SOCKET_ERROR) {
+		printf("receved data\n");
+	}
+	int s = sendto(dst_socket, "HELLO", 5, 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
+	printf("send %d\n", s);
 }
 
 void Soket::Finalize()

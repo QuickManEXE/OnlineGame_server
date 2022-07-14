@@ -24,25 +24,35 @@ void Soket::Init()
 
 void Soket::Run()
 {
-	int n;
+	//int n;
 
-	//n = recv(sock, buf, sizeof(buf), 0);
-	n = recv(sock, (char*)(&pos), sizeof(pos), 0);
-	//printf("%d\n", n);
-	if (n < 1) {
-		if (WSAGetLastError() == WSAEWOULDBLOCK) {
-			// ‚Ü‚¾—ˆ‚È‚¢B
-			//printf("MADA KONAI\n");
-		}
-		else {
-			printf("error : 0x%x\n", WSAGetLastError());
+	////n = recv(sock, buf, sizeof(buf), 0);
+	//n = recv(sock, (char*)(&pos), sizeof(pos), 0);
+	////printf("%d\n", n);
+	//if (n < 1) {
+	//	if (WSAGetLastError() == WSAEWOULDBLOCK) {
+	//		// ‚Ü‚¾—ˆ‚È‚¢B
+	//		//printf("MADA KONAI\n");
+	//	}
+	//	else {
+	//		printf("error : 0x%x\n", WSAGetLastError());
 
-		}
-	}
-	else {
-		printf("received data\n");
-		//printf("%s\n", buf);
+	//	}
+	//}
+	//else {
+	//	printf("received data\n");
+	//	//printf("%s\n", buf);
 
+	//}
+
+
+	//int addrlen;
+	sockaddr_in fromaddr;
+	int addrlen = sizeof(fromaddr);
+	int n = recvfrom(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, &addrlen);
+	if (n != SOCKET_ERROR) {
+		pos.x += 1.0f;
+		int s = sendto(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
 	}
 
 

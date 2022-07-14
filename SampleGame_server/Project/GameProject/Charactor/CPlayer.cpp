@@ -75,7 +75,7 @@ void CPlayer::Update()
 
 void CPlayer::Render()
 {
-	soket.SendRenderUpdateData(pos);
+	//soket.SendRenderUpdateData(pos);
 
 	img.SetPos(pos);
 

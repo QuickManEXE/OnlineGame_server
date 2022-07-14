@@ -75,10 +75,11 @@ void CPlayer::Update()
 
 void CPlayer::Render()
 {
-	CVector3D pos3D = soket.RecvRenderUpdateData();
-	CVector2D pos2D(pos3D.x, pos3D.y);
-
-	img.SetPos(pos2D);
+	//CVector3D pos3D = soket.RecvRenderUpdateData();
+	//CVector2D pos2D(pos3D.x, pos3D.y);
+	
+	pos = CVector2D(soket.pos.x, soket.pos.y);
+	img.SetPos(pos);
 
 	//ï`âÊèàóù
 	img.Draw();
