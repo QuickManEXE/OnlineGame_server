@@ -19,6 +19,9 @@ public:
 
 	CVector3D receve_pos;
 
+	sockaddr_in fromaddr;
+	int addrlen = sizeof(fromaddr);
+
 public:
 	void Init();
 	void Run();

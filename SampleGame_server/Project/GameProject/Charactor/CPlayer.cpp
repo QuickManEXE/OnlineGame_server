@@ -17,6 +17,7 @@ collision(&pos,28.0f,this,eLayer_Player)
 
 	//プレイヤーの初期位置
 	pos = p;
+	soket.pos = pos;
 
 	soket.Init();
 }
@@ -28,8 +29,6 @@ CPlayer::~CPlayer()
 
 void CPlayer::Update()
 {
-	
-	
 	//更新処理
 	//printf("ここの処理を繰り返し実行しています");
 	//if との組み合わせ
@@ -64,18 +63,17 @@ void CPlayer::Update()
 	//new CPlayer(pos);				//同じ場所にプレイヤーを生成する
 	
 	//移動処理の初期化
-	soket.pos = CVector3D::zero;
+	//soket.pos = CVector3D::zero;
 	//サーバーの更新
 	soket.Run();
 	//移動の更新
-	pos += CVector2D(soket.pos.x,soket.pos.y);
-	
-	
+	//pos += CVector2D(soket.pos.x,soket.pos.y);
 }
 
 void CPlayer::Render()
 {
 	//soket.SendRenderUpdateData(pos);
+	//CVector2D pos(soket.pos.x, soket.pos.y);
 
 	img.SetPos(pos);
 
