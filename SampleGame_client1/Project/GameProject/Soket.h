@@ -15,10 +15,20 @@ public:
 	
 	int dst_socket;
 
+	char send_buf1[256], send_buf2[256];
+	char recv_buf[256];
+
+	CVector3D pos;
+
+	struct timeval t_val = { 0, 1000 };
+
+	fd_set fds, readfds;
+
+	CVector3D receve_pos;
 public:
 	Soket();
 	void Init();
 	void Run();
 	void Finalize();
-
+	CVector3D RecvRenderUpdateData();
 };

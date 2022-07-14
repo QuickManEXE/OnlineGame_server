@@ -54,3 +54,10 @@ void Soket::finalize()
 
 	WSACleanup();
 }
+
+void Soket::SendRenderUpdateData(CVector3D _pos)
+{
+	receve_pos = _pos;
+	send(sock, (char*)(&receve_pos), sizeof(receve_pos), 0);
+	printf("レンダーデータ更新\n");
+}

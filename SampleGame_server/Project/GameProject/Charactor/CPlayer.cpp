@@ -29,8 +29,7 @@ CPlayer::~CPlayer()
 void CPlayer::Update()
 {
 	
-	soket.pos = CVector3D::zero;
-	soket.Run();
+	
 	//更新処理
 	//printf("ここの処理を繰り返し実行しています");
 	//if との組み合わせ
@@ -41,17 +40,17 @@ void CPlayer::Update()
 	
 	//プレイヤーの位置
 	//pos.x 横の位置　	pos.y　縦の位置
-	if (HOLD(CInput::eRight)) {
+	/*if (HOLD(CInput::eRight)) {
 		pos.x += 4;
 	}
 	if (HOLD(CInput::eLeft)) {
 		pos.x -= 4;
-	}
+	}*/
 
 
-	if (PUSH(CInput::eButton1)) {
-		new CBullet(pos, 180, 5);			//真上へ撃つ
-	}
+	//if (PUSH(CInput::eButton1)) {
+	//	new CBullet(pos, 180, 5);			//真上へ撃つ
+	//}
 
 	//弾生成     位置　発射角　速さ
 	//new CBullet(pos, 0, 5);			//真下に撃つ
@@ -64,6 +63,11 @@ void CPlayer::Update()
 	//プレイヤー生成 x　y
 	//new CPlayer(pos);				//同じ場所にプレイヤーを生成する
 	
+	//移動処理の初期化
+	soket.pos = CVector3D::zero;
+	//サーバーの更新
+	soket.Run();
+	//移動の更新
 	pos += CVector2D(soket.pos.x,soket.pos.y);
 	
 	
@@ -71,6 +75,8 @@ void CPlayer::Update()
 
 void CPlayer::Render()
 {
+	soket.SendRenderUpdateData(pos);
+
 	img.SetPos(pos);
 
 	//描画処理

@@ -10,6 +10,8 @@ private:
 	CVector2D	pos;
 	Collision	collision;
 
+	Soket soket;
+
 	
 public:
 	CPlayer(const CVector2D pos);
