@@ -15,6 +15,7 @@ collision(&pos,28.0f,this,eLayer_Player)
 
 	//プレイヤーの初期位置
 	pos = p;
+	soket.pos = pos;
 
 	soket.Init();
 	//soket.Run();
@@ -28,7 +29,6 @@ CPlayer::~CPlayer()
 void CPlayer::Update()
 {
 
-	soket.pos = CVector3D::zero;
 	//更新処理
 	//printf("ここの処理を繰り返し実行しています");
 	//if との組み合わせ
@@ -45,12 +45,12 @@ void CPlayer::Update()
 	if (HOLD(CInput::eLeft)) {
 		pos.x -= 4;
 	}*/
-	if (HOLD(CInput::eRight)) {
+	/*if (HOLD(CInput::eRight)) {
 		soket.pos.x += 4;
 	}
 	if (HOLD(CInput::eLeft)) {
 		soket.pos.x -= 4;
-	}
+	}*/
 
 
 	if (PUSH(CInput::eButton1)) {
@@ -78,8 +78,8 @@ void CPlayer::Render()
 	//CVector3D pos3D = soket.RecvRenderUpdateData();
 	//CVector2D pos2D(pos3D.x, pos3D.y);
 	
-	pos = CVector2D(soket.pos.x, soket.pos.y);
-	img.SetPos(pos);
+	//pos = CVector2D(soket.pos.x, soket.pos.y);
+	img.SetPos(soket.pos.x,soket.pos.y);
 
 	//描画処理
 	img.Draw();

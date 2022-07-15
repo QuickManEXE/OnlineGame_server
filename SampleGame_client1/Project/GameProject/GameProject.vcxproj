@@ -25,6 +25,8 @@
     <ClInclude Include="Charactor\CPlayer.h" />
     <ClInclude Include="Effect\CEffect.h" />
     <ClInclude Include="Field\CField.h" />
+    <ClInclude Include="GameController.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GID.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Soket.h" />
@@ -43,6 +45,8 @@
     <ClCompile Include="Charactor\CPlayer.cpp" />
     <ClCompile Include="Effect\CEffect.cpp" />
     <ClCompile Include="Field\CField.cpp" />
+    <ClCompile Include="GameController.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Soket.cpp" />
     <ClCompile Include="System\Collision.cpp" />

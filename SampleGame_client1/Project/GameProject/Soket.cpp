@@ -57,6 +57,21 @@ void Soket::Init()
 void Soket::Run()
 {
 
+	/*int i;
+	int n = recv(dst_socket, (char*)(&pos), sizeof(pos), 0);
+	if (n != SOCKET_ERROR) {
+		printf("receved data\n");
+	}*/
+	//int s = sendto(dst_socket, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
+	/*if (HOLD(CInput::eRight)) {
+		i = 0;
+		int s = sendto(dst_socket, (char*)(&i), sizeof(i), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
+	}
+	if (HOLD(CInput::eLeft)) {
+		i = 1;
+		int s = sendto(dst_socket, (char*)(&i), sizeof(i), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
+	}*/
+
 	//std::cout << "‰½‚©•¶Žš‚ð‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
 	//std::cin >> send_buf1;
 
@@ -74,8 +89,15 @@ void Soket::Run()
 	int n = recv(dst_socket, (char*)(&pos), sizeof(pos), 0);
 	if (n != SOCKET_ERROR) {
 		printf("receved data\n");
+		
 	}
-	int s = sendto(dst_socket, "HELLO", 5, 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
+	if (HOLD(CInput::eRight)) {
+		pos.x += 4;
+	}
+	if (HOLD(CInput::eLeft)) {
+		pos.x -= 4;
+	}
+	int s = sendto(dst_socket, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
 	printf("send %d\n", s);
 }
 

@@ -44,31 +44,32 @@ void Soket::Run()
 	//	//printf("%s\n", buf);
 
 	//}
-	int i = -1;
+	/*int i = -1;*/
 	/*sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);*/
-	int n = recvfrom(sock, (char*)(&i), sizeof(i), 0, (struct sockaddr*)&fromaddr, &addrlen);
-	if (n != SOCKET_ERROR) {
-		//pos.x += 1.0f;
-		//int s = sendto(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
-		if (i==0) {
-		pos.x += 4;
-		}
-		if (i==1) {
-		pos.x -= 4;
-		}
-	}
+	//int n = recvfrom(sock, (char*)(&i), sizeof(i), 0, (struct sockaddr*)&fromaddr, &addrlen);
+	//if (n != SOCKET_ERROR) {
+	//	//pos.x += 1.0f;
+	//	//int s = sendto(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
+	//	if (i==0) {
+	//	pos.x += 4;
+	//	}
+	//	if (i==1) {
+	//	pos.x -= 4;
+	//	}
+	//}
 
 	
 
 	//int addrlen;
-	/*sockaddr_in fromaddr;
+	sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);
+	CVector3D recv_pos;
 	int n = recvfrom(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, &addrlen);
 	if (n != SOCKET_ERROR) {
-		pos.x += 1.0f;
+		//pos.x += 1.0f;
 		int s = sendto(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
-	}*/
+	}
 
 
 }

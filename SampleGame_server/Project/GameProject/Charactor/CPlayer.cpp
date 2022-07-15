@@ -75,7 +75,7 @@ void CPlayer::Render()
 	//soket.SendRenderUpdateData(pos);
 	//CVector2D pos(soket.pos.x, soket.pos.y);
 
-	img.SetPos(pos);
+	img.SetPos(soket.pos.x,soket.pos.y);
 
 	//•`‰æˆ—
 	img.Draw();

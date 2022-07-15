@@ -41,6 +41,12 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Soket.h" />
+    <ClInclude Include="GameController.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -78,6 +84,12 @@
       <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="Soket.cpp" />
+    <ClCompile Include="GameController.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
