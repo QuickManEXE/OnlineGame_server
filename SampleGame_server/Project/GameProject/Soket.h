@@ -3,7 +3,11 @@
 
 
 class Soket {
-
+public:
+	struct CVector2DAndID {
+		int member_id;
+		CVector2D pos;
+	};
 public:
 
 	static const UINT WM_ASYNC = (WM_USER + 1);	// 非同期通信イベントID
@@ -15,16 +19,13 @@ public:
 
 	char buf[2048];
 
-	CVector3D pos;
-
-	CVector3D receve_pos;
-
 	sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);
 
+	CVector2DAndID mempos;
 public:
 	void Init();
-	void Run();
+	void Run(CVector2D* pos);
 	void finalize();
 	void SendRenderUpdateData(CVector3D _pos);
 };

@@ -11,9 +11,11 @@ private:
 	Collision	collision;
 
 	Soket soket;
+
+	int member_id;
 public:
-	CPlayer(const CVector2D pos);
-	CPlayer(const float x, const float y);
+	CPlayer(int id,const CVector2D pos);
+	CPlayer(int id,const float x, const float y);
 	~CPlayer();
 
 	void Update();

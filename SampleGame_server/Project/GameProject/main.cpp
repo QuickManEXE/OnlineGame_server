@@ -111,7 +111,8 @@ void Init(void)
 	
 
 
-	new CPlayer(CVector2D(300, 660));
+	new CPlayer(1,CVector2D(300, 660));
+	new CPlayer(2, CVector2D(600, 660));
 	new CUI();
 	
 }

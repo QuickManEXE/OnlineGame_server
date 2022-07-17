@@ -10,6 +10,7 @@
 #include "UI/CUI.h"
 #include "Field/CField.h"
 #include "Charactor/AnimData.h"
+#include"GameManager.h"
 
 void MainLoop(void) {
 	//---------------------------------------
@@ -109,9 +110,10 @@ void Init(void)
 		}
 	}
 	
+	GameManager::id = 1;
 
-
-	new CPlayer(CVector2D(300, 660));
+	new CPlayer(1,CVector2D(300, 660));
+	new CPlayer(3, CVector2D(600, 660));
 	new CUI();
 	
 }

@@ -5,9 +5,9 @@
 
 
 using namespace Player;
-CPlayer::CPlayer(const float x, const float y):CPlayer(CVector2D(x,y)) {
+CPlayer::CPlayer(int id,const float x, const float y):CPlayer(id,CVector2D(x,y)) {
 }
-CPlayer::CPlayer(const CVector2D p):Task(eId_Player,eUp_Player,eRd_Player), 
+CPlayer::CPlayer(int id,const CVector2D p):Task(eId_Player,eUp_Player,eRd_Player), 
 collision(&pos,28.0f,this,eLayer_Player)
 {
 	//初期化
@@ -17,9 +17,10 @@ collision(&pos,28.0f,this,eLayer_Player)
 
 	//プレイヤーの初期位置
 	pos = p;
-	soket.pos = pos;
 
 	soket.Init();
+
+	member_id = id;
 }
 
 CPlayer::~CPlayer()
@@ -65,7 +66,7 @@ void CPlayer::Update()
 	//移動処理の初期化
 	//soket.pos = CVector3D::zero;
 	//サーバーの更新
-	soket.Run();
+	soket.Run(&pos);
 	//移動の更新
 	//pos += CVector2D(soket.pos.x,soket.pos.y);
 }
@@ -75,7 +76,7 @@ void CPlayer::Render()
 	//soket.SendRenderUpdateData(pos);
 	//CVector2D pos(soket.pos.x, soket.pos.y);
 
-	img.SetPos(soket.pos.x,soket.pos.y);
+	img.SetPos(pos);
 
 	//描画処理
 	img.Draw();

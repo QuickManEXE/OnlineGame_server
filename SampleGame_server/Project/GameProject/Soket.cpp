@@ -22,7 +22,7 @@ void Soket::Init()
 	memset(buf, 0, sizeof(buf));
 }
 
-void Soket::Run()
+void Soket::Run(CVector2D* pos)
 {
 	//int n;
 
@@ -64,11 +64,10 @@ void Soket::Run()
 	//int addrlen;
 	sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);
-	CVector3D recv_pos;
-	int n = recvfrom(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, &addrlen);
+	int n = recvfrom(sock, (char*)(pos), sizeof(*pos), 0, (struct sockaddr*)&fromaddr, &addrlen);
 	if (n != SOCKET_ERROR) {
 		//pos.x += 1.0f;
-		int s = sendto(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
+		int s = sendto(sock, (char*)(pos), sizeof(*pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
 	}
 
 
@@ -83,8 +82,8 @@ void Soket::finalize()
 
 void Soket::SendRenderUpdateData(CVector3D _pos)
 {
-	receve_pos = _pos;
-	//send(sock, (char*)(&receve_pos), sizeof(receve_pos), 0);
-	int s = sendto(sock, (char*)(&receve_pos), sizeof(receve_pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
-	printf("レンダーデータ更新\n");
+	
+	////send(sock, (char*)(&receve_pos), sizeof(receve_pos), 0);
+	//int s = sendto(sock, (char*)(&receve_pos), sizeof(receve_pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
+	//printf("レンダーデータ更新\n");
 }
