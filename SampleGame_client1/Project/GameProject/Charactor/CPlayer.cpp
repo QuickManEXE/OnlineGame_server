@@ -31,7 +31,6 @@ void CPlayer::Update()
 {
 	
 	//更新処理
-	//printf("ここの処理を繰り返し実行しています");
 	//if との組み合わせ
 	//各方向キーを押していれば
 	//HOLD(CInput::eUp) HOLD(CInput::eDown) HOLD(CInput::eLeft) HOLD(CInput::eRight)

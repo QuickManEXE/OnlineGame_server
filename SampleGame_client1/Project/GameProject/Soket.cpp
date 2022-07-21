@@ -88,3 +88,44 @@ void Soket::Finalize()
 	WSACleanup();
 }
 
+void Soket::ReceiveMembersData()
+{
+	int addrlen = sizeof(dst_addr);
+	//送信データサイズ int + MemberData * 人数
+	UINT bufsize = sizeof(int) + sizeof(PlayerDataManager::MemberData) * 2;
+
+
+	int n = 0;
+	while (1) {
+		//受信データ最大サイズ
+		const char size_max = 1024;
+		//領域確保
+		char* buf = new char[size_max];
+		//読み込みポインタ用
+		char* b = buf;
+		//受信
+		int n = recv(dst_socket, buf, bufsize, 0);
+		if (n == SOCKET_ERROR)break;
+		//最初のデータ：人数
+		int player_cnt = *((int*)b);
+		b += sizeof(int);
+		//人数分読み込み
+		for (int i = 0; i < player_cnt; i++, b += sizeof(PlayerDataManager::PlayerData)) {
+			PlayerDataManager::PlayerData* data = (PlayerDataManager::PlayerData*)b;
+			//PlayerDataManager::Instance().UpdateMembersData(*data);
+			
+
+		}
+		printf("受け取った%d\n",n);
+	}
+	
+		
+		
+			
+			
+
+		
+	
+
+}
+

@@ -16,7 +16,7 @@ void PlayerDataManager::UpdateMembersData(PlayerData _playerData)
 		//新しくエントリーする
 		printf("ID[%d]がエントリーしました\n", id);
 		MemberData member_data;
-		member_data.pointer = new CPlayer(id, CVector2D(300, 660),&Soket::Instance().playerData);
+		member_data.pointer = new CPlayer(id, CVector2D(300, 660),&_playerData);
 		member_data.playerData = (*member_data.pointer->m_playerData);
 		m_members_data[id] = member_data;
 	}
@@ -25,4 +25,8 @@ void PlayerDataManager::UpdateMembersData(PlayerData _playerData)
 std::map<int, PlayerDataManager::MemberData> PlayerDataManager::GetMembersData()
 {
 	return std::map<int, MemberData>();
+}
+
+void PlayerDataManager::RecieveMembersData()
+{
 }

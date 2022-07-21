@@ -13,7 +13,7 @@ public:
 	WSADATA wsa_data;
 	
 	struct sockaddr_in dst_addr;
-	
+	int addlen;
 	int dst_socket;
 
 	char send_buf1[256], send_buf2[256];
@@ -29,9 +29,11 @@ public:
 
 	PlayerDataManager::PlayerData playerData;
 
+	std::map<int, PlayerDataManager::MemberData> m_members_data;
 public:
 	Soket();
 	void Init(int _member_id);
 	void Run(PlayerDataManager::PlayerData* pd);
 	void Finalize();
+	void ReceiveMembersData();
 };

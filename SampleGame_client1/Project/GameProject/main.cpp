@@ -21,6 +21,7 @@ void MainLoop(void) {
 	TaskManager::GetInstance()->KillAppoint();
 
 	Soket::Instance().Run(&Soket::Instance().playerData);
+	Soket::Instance().ReceiveMembersData();
 
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
@@ -121,7 +122,7 @@ void Init(void)
 	Soket::Instance().Init(GameManager::m_member_id);
 
 
-	new CPlayer(GameManager::m_member_id,CVector2D(300,600),&Soket::Instance().playerData);
+	//new CPlayer(GameManager::m_member_id,CVector2D(300,600),&Soket::Instance().playerData);
 	////new CPlayer(1,CVector2D(300, 660));
 	////new CPlayer(3, CVector2D(600, 660));
 	//new CUI();

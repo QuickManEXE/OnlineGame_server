@@ -38,15 +38,15 @@ void Soket::Run()
 			PlayerDataManager::Instance().UpdateMembersData(playerData);
 			std::map<int, PlayerDataManager::MemberData> members_data = PlayerDataManager::Instance().GetMembersData();
 			//送信データサイズ int + MemberData * 人数
-			UINT bufsize = sizeof(int) + sizeof(PlayerDataManager::MemberData) * members_data.size();
+			UINT bufsize = sizeof(int) + sizeof(PlayerDataManager::PlayerData) * members_data.size();
 			char* buf = new char[bufsize];
 			//人数記録
 			int* num = (int*)buf;
 			*num = members_data.size();
 			//プレイヤーの各データを記録
-			PlayerDataManager::MemberData* pd = (PlayerDataManager::MemberData*)(buf + 4);
+			PlayerDataManager::PlayerData* pd = (PlayerDataManager::PlayerData*)(buf + 4);
 			for (auto v : members_data) {
-				*pd = v.second;
+				*pd = v.second.playerData;
 				pd++;
 			}
 			//int s = sendto(sock, (char*)(&members_data), sizeof(members_data), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
