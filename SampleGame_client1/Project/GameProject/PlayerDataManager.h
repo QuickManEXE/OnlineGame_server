@@ -21,5 +21,4 @@ public:
 public:
 	void UpdateMembersData(PlayerData _playerData);
 	std::map<int, PlayerDataManager::MemberData> GetMembersData();
-	void RecieveMembersData();
 };

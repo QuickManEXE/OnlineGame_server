@@ -24,5 +24,5 @@ void PlayerDataManager::UpdateMembersData(PlayerData _playerData)
 
 std::map<int, PlayerDataManager::MemberData> PlayerDataManager::GetMembersData()
 {
-	return std::map<int, MemberData>();
+	return m_members_data;
 }

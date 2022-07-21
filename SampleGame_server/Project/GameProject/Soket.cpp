@@ -28,7 +28,7 @@ void Soket::Run()
 
 	PlayerDataManager::PlayerData playerData;
 
-	//int addrlen;
+	
 	sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);
 	
@@ -51,7 +51,7 @@ void Soket::Run()
 			}
 			//int s = sendto(sock, (char*)(&members_data), sizeof(members_data), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
 			int s = sendto(sock, buf, bufsize, 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
-
+			printf("%d\n", s);
 		}
 		else {
 			break;

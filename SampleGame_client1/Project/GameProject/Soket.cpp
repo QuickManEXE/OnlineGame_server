@@ -90,12 +90,12 @@ void Soket::Finalize()
 
 void Soket::ReceiveMembersData()
 {
-	int addrlen = sizeof(dst_addr);
+	//int addrlen = sizeof(dst_addr);
 	//送信データサイズ int + MemberData * 人数
-	UINT bufsize = sizeof(int) + sizeof(PlayerDataManager::MemberData) * 2;
+	//UINT bufsize = sizeof(int) + sizeof(PlayerDataManager::MemberData) * 2;
 
 
-	int n = 0;
+	//int n = 0;
 	while (1) {
 		//受信データ最大サイズ
 		const char size_max = 1024;
@@ -104,7 +104,7 @@ void Soket::ReceiveMembersData()
 		//読み込みポインタ用
 		char* b = buf;
 		//受信
-		int n = recv(dst_socket, buf, bufsize, 0);
+		int n = recv(dst_socket, buf, size_max, 0);
 		if (n == SOCKET_ERROR)break;
 		//最初のデータ：人数
 		int player_cnt = *((int*)b);
@@ -119,13 +119,5 @@ void Soket::ReceiveMembersData()
 		printf("受け取った%d\n",n);
 	}
 	
-		
-		
-			
-			
-
-		
-	
-
 }
 
