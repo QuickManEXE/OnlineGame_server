@@ -5,7 +5,7 @@
 
 class GameManager : public Task {
 public:
-	static int id;
+	static int m_member_id;
 public:
 	GameManager();
 	~GameManager();

@@ -21,9 +21,7 @@ void MainLoop(void) {
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
 
-
 	//ŠeŽí•`‰æ
-
 	TaskManager::GetInstance()->RenderAll();
 
 

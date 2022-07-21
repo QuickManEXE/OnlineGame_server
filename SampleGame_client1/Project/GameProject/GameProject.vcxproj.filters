@@ -47,6 +47,9 @@
     <ClInclude Include="GameManager.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Singleton\Singleton.h">
+      <Filter>Singleton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -90,6 +93,9 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Singleton\Singleton.cpp">
+      <Filter>Singleton</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -115,6 +121,9 @@
     </Filter>
     <Filter Include="Game\Data">
       <UniqueIdentifier>{e0239af1-ec0d-49b3-b682-46a8376c0866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singleton">
+      <UniqueIdentifier>{5b36d47e-2f59-4eb6-90f0-214582404ff2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

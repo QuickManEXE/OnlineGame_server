@@ -11,6 +11,7 @@
 #include "Field/CField.h"
 #include "Charactor/AnimData.h"
 #include"GameManager.h"
+#include"Soket.h"
 
 void MainLoop(void) {
 	//---------------------------------------
@@ -18,6 +19,8 @@ void MainLoop(void) {
 	//---------------------------------------
 	
 	TaskManager::GetInstance()->KillAppoint();
+
+	Soket::Instance().Run(GameManager::m_member_id);
 
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
@@ -110,11 +113,17 @@ void Init(void)
 		}
 	}
 	
-	GameManager::id = 1;
+	/* —”Œn—ñ‚Ì•ÏX */
+	srand((unsigned)time(NULL));
+	GameManager::m_member_id = rand();
 
-	new CPlayer(1,CVector2D(300, 660));
-	new CPlayer(3, CVector2D(600, 660));
-	new CUI();
+	Soket::Build();
+	Soket::Instance().Init(GameManager::m_member_id);
+
+
+	////new CPlayer(1,CVector2D(300, 660));
+	////new CPlayer(3, CVector2D(600, 660));
+	//new CUI();
 	
 }
 

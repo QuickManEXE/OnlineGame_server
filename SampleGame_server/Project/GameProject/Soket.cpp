@@ -1,4 +1,5 @@
 #include "Soket.h"
+#include"PlayerDataManager.h"
 
 void Soket::Init()
 {
@@ -22,54 +23,20 @@ void Soket::Init()
 	memset(buf, 0, sizeof(buf));
 }
 
-void Soket::Run(CVector2D* pos)
+void Soket::Run()
 {
-	//int n;
 
-	////n = recv(sock, buf, sizeof(buf), 0);
-	//n = recv(sock, (char*)(&pos), sizeof(pos), 0);
-	////printf("%d\n", n);
-	//if (n < 1) {
-	//	if (WSAGetLastError() == WSAEWOULDBLOCK) {
-	//		// まだ来ない。
-	//		//printf("MADA KONAI\n");
-	//	}
-	//	else {
-	//		printf("error : 0x%x\n", WSAGetLastError());
-
-	//	}
-	//}
-	//else {
-	//	printf("received data\n");
-	//	//printf("%s\n", buf);
-
-	//}
-	/*int i = -1;*/
-	/*sockaddr_in fromaddr;
-	int addrlen = sizeof(fromaddr);*/
-	//int n = recvfrom(sock, (char*)(&i), sizeof(i), 0, (struct sockaddr*)&fromaddr, &addrlen);
-	//if (n != SOCKET_ERROR) {
-	//	//pos.x += 1.0f;
-	//	//int s = sendto(sock, (char*)(&pos), sizeof(pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
-	//	if (i==0) {
-	//	pos.x += 4;
-	//	}
-	//	if (i==1) {
-	//	pos.x -= 4;
-	//	}
-	//}
-
-	
+	PlayerDataManager::PlayerData playerData;
 
 	//int addrlen;
 	sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);
-	int n = recvfrom(sock, (char*)(pos), sizeof(*pos), 0, (struct sockaddr*)&fromaddr, &addrlen);
+	int n = recvfrom(sock, (char*)(&playerData), sizeof(playerData), 0, (struct sockaddr*)&fromaddr, &addrlen);
 	if (n != SOCKET_ERROR) {
-		//pos.x += 1.0f;
-		int s = sendto(sock, (char*)(pos), sizeof(*pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
+		PlayerDataManager::Instance().UpdateMembersData(playerData);
+		std::map<int, PlayerDataManager::MemberData> members_data =  PlayerDataManager::Instance().GetMembersData();
+		int s = sendto(sock, (char*)(&members_data), sizeof(members_data), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
 	}
-
 
 }
 
@@ -78,12 +45,4 @@ void Soket::finalize()
 	closesocket(sock);
 
 	WSACleanup();
-}
-
-void Soket::SendRenderUpdateData(CVector3D _pos)
-{
-	
-	////send(sock, (char*)(&receve_pos), sizeof(receve_pos), 0);
-	//int s = sendto(sock, (char*)(&receve_pos), sizeof(receve_pos), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
-	//printf("レンダーデータ更新\n");
 }

@@ -29,6 +29,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GID.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Singleton\Singleton.h" />
     <ClInclude Include="Soket.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System\Collision.h" />
@@ -48,6 +49,7 @@
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Singleton\Singleton.cpp" />
     <ClCompile Include="Soket.cpp" />
     <ClCompile Include="System\Collision.cpp" />
     <ClCompile Include="System\Task.cpp" />

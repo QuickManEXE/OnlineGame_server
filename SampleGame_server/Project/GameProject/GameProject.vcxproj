@@ -27,6 +27,8 @@
     <ClInclude Include="Field\CField.h" />
     <ClInclude Include="GID.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="PlayerDataManager.h" />
+    <ClInclude Include="Singleton\Singleton.h" />
     <ClInclude Include="Soket.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System\Collision.h" />
@@ -44,6 +46,8 @@
     <ClCompile Include="Effect\CEffect.cpp" />
     <ClCompile Include="Field\CField.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerDataManager.cpp" />
+    <ClCompile Include="Singleton\Singleton.cpp" />
     <ClCompile Include="Soket.cpp" />
     <ClCompile Include="System\Collision.cpp" />
     <ClCompile Include="System\Task.cpp" />

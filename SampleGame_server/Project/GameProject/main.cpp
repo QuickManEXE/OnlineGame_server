@@ -10,6 +10,8 @@
 #include "UI/CUI.h"
 #include "Field/CField.h"
 #include "Charactor/AnimData.h"
+#include"PlayerDataManager.h"
+#include"Soket.h"
 
 void MainLoop(void) {
 	//---------------------------------------
@@ -18,10 +20,12 @@ void MainLoop(void) {
 	
 	TaskManager::GetInstance()->KillAppoint();
 
+	Soket::Instance().Run();
+
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
 
-
+	
 	//ŠeŽí•`‰æ
 
 	TaskManager::GetInstance()->RenderAll();
@@ -110,10 +114,13 @@ void Init(void)
 	}
 	
 
+	PlayerDataManager::Build();
+	Soket::Build();
+	Soket::Instance().Init();
 
-	new CPlayer(1,CVector2D(300, 660));
-	new CPlayer(2, CVector2D(600, 660));
-	new CUI();
+	//new CPlayer(1,CVector2D(300, 660));
+	//new CPlayer(2, CVector2D(600, 660));
+	//new CUI();
 	
 }
 

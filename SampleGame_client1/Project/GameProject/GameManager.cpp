@@ -1,7 +1,7 @@
 #include "GameManager.h"
 
 
-int GameManager::id;
+int GameManager::m_member_id;
 
 
 GameManager::GameManager()

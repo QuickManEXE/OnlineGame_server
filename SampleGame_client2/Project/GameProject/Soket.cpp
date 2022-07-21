@@ -35,10 +35,10 @@ void Soket::Init()
 	dst_socket = socket(AF_INET, SOCK_DGRAM, 0);
 
 	// 接続処理
-	if (connect(dst_socket, (struct sockaddr*)&dst_addr, sizeof(dst_addr))) {
+	/*if (connect(dst_socket, (struct sockaddr*)&dst_addr, sizeof(dst_addr))) {
 		std::cerr << "接続失敗(サーバIPアドレス" << server_ip_addr << "/接続先ポート番号" << port_number << std::endl;
 		exit(0);
-	}
+	}*/
 
 	std::cout << "接続完了(サーバIPアドレス" << server_ip_addr << "/接続先ポート番号" << port_number << std::endl << std::endl;
 	

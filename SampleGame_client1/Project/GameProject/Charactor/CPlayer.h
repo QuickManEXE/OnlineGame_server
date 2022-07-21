@@ -13,6 +13,8 @@ private:
 	Soket soket;
 
 	int member_id;
+
+	Soket::PlayerData playerData;
 public:
 	CPlayer(int id,const CVector2D pos);
 	CPlayer(int id,const float x, const float y);

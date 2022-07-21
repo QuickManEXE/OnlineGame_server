@@ -1,11 +1,14 @@
 #pragma once
 #include"stdafx.h"
+#include"Singleton/Singleton.h"
 
-class Soket {
+class Soket : public Singleton<Soket>{
 public:
-	struct CVector2DAndID {
+	struct PlayerData {
 		int member_id;
 		CVector2D pos;
+		CVector2D vec;
+		int key[CInput::eKeyMax]{0};
 	};
 public:
 
@@ -33,7 +36,6 @@ public:
 public:
 	Soket();
 	void Init(int _member_id);
-	void Run(int _member_id, CVector2D* pos);
+	void Run(int _member_id);
 	void Finalize();
-	CVector2D RecvRenderUpdateData();
 };

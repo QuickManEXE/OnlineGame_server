@@ -1,13 +1,9 @@
 #pragma once
 #include"stdafx.h"
+#include"Charactor\CPlayer.h"
+#include"Singleton\Singleton.h"
 
-
-class Soket {
-public:
-	struct CVector2DAndID {
-		int member_id;
-		CVector2D pos;
-	};
+class Soket : public Singleton<Soket> {
 public:
 
 	static const UINT WM_ASYNC = (WM_USER + 1);	// 非同期通信イベントID
@@ -22,10 +18,8 @@ public:
 	sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);
 
-	CVector2DAndID mempos;
 public:
 	void Init();
-	void Run(CVector2D* pos);
+	void Run();
 	void finalize();
-	void SendRenderUpdateData(CVector3D _pos);
 };

@@ -41,6 +41,10 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Soket.h" />
+    <ClInclude Include="PlayerDataManager.h" />
+    <ClInclude Include="Singleton\Singleton.h">
+      <Filter>Singleton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -78,6 +82,10 @@
       <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="Soket.cpp" />
+    <ClCompile Include="PlayerDataManager.cpp" />
+    <ClCompile Include="Singleton\Singleton.cpp">
+      <Filter>Singleton</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -103,6 +111,9 @@
     </Filter>
     <Filter Include="Game\Data">
       <UniqueIdentifier>{e0239af1-ec0d-49b3-b682-46a8376c0866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singleton">
+      <UniqueIdentifier>{9e4d0955-8bf3-42ac-8438-3750182143d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
