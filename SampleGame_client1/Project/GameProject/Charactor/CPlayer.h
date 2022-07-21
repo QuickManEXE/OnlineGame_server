@@ -3,6 +3,7 @@
 #include "../System/Task.h"
 #include "../System/Collision.h"
 #include"../Soket.h"
+#include"../PlayerDataManager.h"
 
 class CPlayer : public Task , public CollisionCall{
 private:
@@ -10,14 +11,15 @@ private:
 	CVector2D	pos;
 	Collision	collision;
 
-	Soket soket;
-
 	int member_id;
 
-	Soket::PlayerData playerData;
 public:
-	CPlayer(int id,const CVector2D pos);
-	CPlayer(int id,const float x, const float y);
+
+	PlayerDataManager::PlayerData* m_playerData;
+
+public:
+	CPlayer(int id,const CVector2D pos, PlayerDataManager::PlayerData* pd);
+	CPlayer(int id,const float x, const float y,PlayerDataManager::PlayerData* pd);
 	~CPlayer();
 
 	void Update();

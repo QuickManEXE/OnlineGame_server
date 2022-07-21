@@ -1,15 +1,9 @@
 #pragma once
 #include"stdafx.h"
 #include"Singleton/Singleton.h"
+#include"PlayerDataManager.h"
 
 class Soket : public Singleton<Soket>{
-public:
-	struct PlayerData {
-		int member_id;
-		CVector2D pos;
-		CVector2D vec;
-		int key[CInput::eKeyMax]{0};
-	};
 public:
 
 	char server_ip_addr[32];
@@ -31,11 +25,13 @@ public:
 
 	fd_set fds, readfds;
 
-	CVector2D receve_pos;
+public:
+
+	PlayerDataManager::PlayerData playerData;
 
 public:
 	Soket();
 	void Init(int _member_id);
-	void Run(int _member_id);
+	void Run(PlayerDataManager::PlayerData* pd);
 	void Finalize();
 };

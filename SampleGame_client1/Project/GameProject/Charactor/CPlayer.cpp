@@ -3,9 +3,9 @@
 #include "../Charactor/CEnemy.h"
 #include "../Effect/CEffect.h"
 using namespace Player;
-CPlayer::CPlayer(int id,const float x, const float y):CPlayer(id,CVector2D(x,y)) {
+CPlayer::CPlayer(int id,const float x, const float y,PlayerDataManager::PlayerData* pd):CPlayer(id,CVector2D(x,y),pd) {
 }
-CPlayer::CPlayer(int id,const CVector2D p):Task(eId_Player,eUp_Player,eRd_Player), 
+CPlayer::CPlayer(int id,const CVector2D p,PlayerDataManager::PlayerData* pd):Task(eId_Player,eUp_Player,eRd_Player), 
 collision(&pos,28.0f,this,eLayer_Player)
 {
 	//初期化
@@ -15,17 +15,16 @@ collision(&pos,28.0f,this,eLayer_Player)
 
 	//プレイヤーの初期位置
 	pos = p;
-	soket.pos = pos;
 	member_id = id;
 
-	
+	m_playerData = pd;
 	
 	
 }
 
 CPlayer::~CPlayer()
 {
-	soket.Finalize();
+	
 }
 
 void CPlayer::Update()
@@ -41,11 +40,11 @@ void CPlayer::Update()
 	
 	//プレイヤーの位置
 	//pos.x 横の位置　	pos.y　縦の位置
-	if (playerData.key[CInput::eRight]) {
-		pos.x += 4;
+	if (m_playerData->key[CInput::eRight]) {
+		m_playerData->pos.x += 4;
 	}
-	if (playerData.key[CInput::eLeft]) {
-		pos.x -= 4;
+	if (m_playerData->key[CInput::eLeft]) {
+		m_playerData->pos.x -= 4;
 	}
 
 	if (PUSH(CInput::eButton1)) {
@@ -67,7 +66,7 @@ void CPlayer::Update()
 void CPlayer::Render()
 {
 
-	img.SetPos(soket.pos);
+	img.SetPos(m_playerData->pos);
 
 	//描画処理
 	img.Draw();

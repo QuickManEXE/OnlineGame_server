@@ -12,6 +12,10 @@ Soket::Soket()
 void Soket::Init(int _member_id)
 {
 
+	playerData.member_id = _member_id;
+
+	playerData.pos = CVector2D(300, 600);
+
 	// WinSock‚Ì‰Šú‰»ˆ—(Version 2.0)
 	if (WSAStartup(MAKEWORD(2, 0), &wsa_data) != 0) {
 		std::cerr << "Winsock‚Ì‰Šú‰»¸”s(WSAStartup)" << std::endl;
@@ -53,22 +57,25 @@ void Soket::Init(int _member_id)
 	printf("‚ ‚È‚½‚ÌID‚Í[%d]‚Å‚·\n", _member_id);
 }
 
-void Soket::Run(int _member_id)
+void Soket::Run(PlayerDataManager::PlayerData* pd)
 {
 
-	PlayerData playerData;
-	playerData.member_id = _member_id;
+	PlayerDataManager::PlayerData* playerData = pd;
+
+	for (int i = 0; i < CInput::eKeyMax; i++) {
+		playerData->key[i] = 0;
+	}
 	
 	if (HOLD(CInput::eRight)) {
-		playerData.key[CInput::eRight] = 1;
+		playerData->key[CInput::eRight] = 1;
 		
 	}
 	if (HOLD(CInput::eLeft)) {
-		playerData.key[CInput::eLeft] = 1;
+		playerData->key[CInput::eLeft] = 1;
 		
 	}	
 
-	int s = sendto(dst_socket, (char*)(&playerData), sizeof(playerData), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
+	int s = sendto(dst_socket, (char*)(playerData), sizeof(*playerData), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
 	printf("send %d\n", s);
 }
 

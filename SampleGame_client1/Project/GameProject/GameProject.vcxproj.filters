@@ -50,6 +50,7 @@
     <ClInclude Include="Singleton\Singleton.h">
       <Filter>Singleton</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerDataManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -96,6 +97,7 @@
     <ClCompile Include="Singleton\Singleton.cpp">
       <Filter>Singleton</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerDataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

@@ -9,7 +9,7 @@ using namespace Player;
 CPlayer::CPlayer(int id,const float x, const float y):CPlayer(id,CVector2D(x,y)) {
 }
 CPlayer::CPlayer(int id,const CVector2D p):Task(eId_Player,eUp_Player,eRd_Player), 
-collision(&pos,28.0f,this,eLayer_Player)
+collision(&m_playerData.pos,28.0f,this,eLayer_Player)
 {
 	//初期化
 	//プレイヤー画像の取得
@@ -17,25 +17,22 @@ collision(&pos,28.0f,this,eLayer_Player)
 	img.SetCenter(32, 32);
 
 	//プレイヤーの初期位置
-	pos = p;
-
-	//soket.Init();
-
-	member_id = id;
+	m_playerData.pos = p;
+	m_playerData.member_id = id;
 }
 
 CPlayer::~CPlayer()
 {
-	//soket.finalize();
+	
 }
 
 void CPlayer::Update()
 {
 	if (m_playerData.key[CInput::eRight]) {
-		pos.x += 4;
+		m_playerData.pos.x += 4;
 	}
 	if (m_playerData.key[CInput::eLeft]) {
-		pos.x -= 4;
+		m_playerData.pos.x -= 4;
 	}
 
 
@@ -84,10 +81,8 @@ void CPlayer::Update()
 
 void CPlayer::Render()
 {
-	//soket.SendRenderUpdateData(pos);
-	//CVector2D pos(soket.pos.x, soket.pos.y);
 
-	img.SetPos(pos);
+	img.SetPos(m_playerData.pos);
 
 	//描画処理
 	img.Draw();
