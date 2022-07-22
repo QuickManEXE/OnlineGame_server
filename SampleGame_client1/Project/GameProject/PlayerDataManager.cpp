@@ -15,10 +15,10 @@ void PlayerDataManager::UpdateMembersData(PlayerData _playerData)
 	else {
 		//新しくエントリーする
 		printf("ID[%d]がエントリーしました\n", id);
-		MemberData member_data;
-		member_data.pointer = new CPlayer(id, CVector2D(300, 660),&_playerData);
-		member_data.playerData = (*member_data.pointer->m_playerData);
-		m_members_data[id] = member_data;
+		MemberData* member_data = &m_members_data[id];
+		member_data->pointer = new CPlayer(id, CVector2D(300, 660),&member_data->playerData);
+		member_data->playerData = _playerData;
+		//m_members_data[id] = member_data;
 	}
 }
 
