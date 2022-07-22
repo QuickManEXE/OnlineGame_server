@@ -29,7 +29,7 @@ CPlayer::~CPlayer()
 
 void CPlayer::Update()
 {
-	
+	pos = m_playerData->pos;
 	//更新処理
 	//if との組み合わせ
 	//各方向キーを押していれば
@@ -65,7 +65,7 @@ void CPlayer::Update()
 void CPlayer::Render()
 {
 
-	img.SetPos(m_playerData->pos);
+	img.SetPos(pos);
 
 	//描画処理
 	img.Draw();
