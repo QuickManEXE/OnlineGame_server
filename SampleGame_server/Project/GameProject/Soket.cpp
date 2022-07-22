@@ -46,7 +46,7 @@ void Soket::Run()
 			//プレイヤーの各データを記録
 			PlayerDataManager::PlayerData* pd = (PlayerDataManager::PlayerData*)(buf + 4);
 			for (auto v : members_data) {
-				*pd = v.second.playerData;
+				*pd = v.second.pointer->m_playerData;
 				pd++;
 			}
 			//int s = sendto(sock, (char*)(&members_data), sizeof(members_data), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));

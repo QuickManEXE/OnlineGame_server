@@ -73,21 +73,21 @@ void CPlayer::Render()
 
 void CPlayer::CallCollision(Collision * c)
 {
-	if (c->GetObj()->GetID() == eId_Player) {
-		//プレイヤー同士の当たり判定
-		CPlayer *p = static_cast<CPlayer*>(c->GetObj());
-		CVector2D v =  p->GetPos() - pos;
-		float l = v.Length();
-		if (l > 0) {
-			pos -= v/l * (28 + 28 - l)/2;
-		} else {
-			pos -= CVector2D(1, 0.1);
-		}
-	} else {
-		new CEffect(pos);
-		//衝突時処理
-		SetKill();
-	}
+	//if (c->GetObj()->GetID() == eId_Player) {
+	//	//プレイヤー同士の当たり判定
+	//	CPlayer *p = static_cast<CPlayer*>(c->GetObj());
+	//	CVector2D v =  p->GetPos() - pos;
+	//	float l = v.Length();
+	//	if (l > 0) {
+	//		pos -= v/l * (28 + 28 - l)/2;
+	//	} else {
+	//		pos -= CVector2D(1, 0.1);
+	//	}
+	//} else {
+	//	new CEffect(pos);
+	//	//衝突時処理
+	//	SetKill();
+	//}
 }
 
 
