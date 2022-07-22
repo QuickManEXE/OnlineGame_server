@@ -68,11 +68,11 @@ void Soket::Run(PlayerDataManager::PlayerData* pd)
 	
 	if (HOLD(CInput::eRight)) {
 		playerData->key[CInput::eRight] = 1;
-		
+		playerData->pos.x += 4;
 	}
 	if (HOLD(CInput::eLeft)) {
 		playerData->key[CInput::eLeft] = 1;
-		
+		playerData->pos.x -= 4;
 	}	
 
 	int s = sendto(dst_socket, (char*)(playerData), sizeof(*playerData), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
@@ -98,13 +98,13 @@ void Soket::ReceiveMembersData()
 	//int n = 0;
 	while (1) {
 		//受信データ最大サイズ
-		const char size_max = 1024;
+		const int size_max = 1024;
 		//領域確保
 		char* buf = new char[size_max];
 		//読み込みポインタ用
 		char* b = buf;
 		//受信
-		int n = recv(dst_socket, buf, size_max, 0);
+		int n = recv(dst_socket, buf, size_max, 0);printf("受け取った%d\n",n);
 		if (n == SOCKET_ERROR)break;
 		//最初のデータ：人数
 		int player_cnt = *((int*)b);
@@ -112,11 +112,13 @@ void Soket::ReceiveMembersData()
 		//人数分読み込み
 		for (int i = 0; i < player_cnt; i++, b += sizeof(PlayerDataManager::PlayerData)) {
 			PlayerDataManager::PlayerData* data = (PlayerDataManager::PlayerData*)b;
-			//PlayerDataManager::Instance().UpdateMembersData(*data);
+			PlayerDataManager::Instance().UpdateMembersData(*data);
 			
 
 		}
-		printf("受け取った%d\n",n);
+
+		delete buf;
+		
 	}
 	
 }
