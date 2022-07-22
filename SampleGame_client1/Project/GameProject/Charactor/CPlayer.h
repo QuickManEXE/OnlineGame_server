@@ -10,6 +10,7 @@ private:
 	CImage		img;
 	CVector2D	pos;
 	Collision	collision;
+	CRect rect;
 
 	int member_id;
 

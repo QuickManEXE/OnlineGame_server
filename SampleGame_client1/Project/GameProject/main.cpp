@@ -109,12 +109,7 @@ void Init(void)
 	ADD_RESOURCE("Bullet2", CImage::CreateImage("Bullet2.png"));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Enemy.png"));
 	ADD_RESOURCE("Effect_Bomb", CImage::CreateImage("Effect_Bomb.png", effectAnimData,96,96));
-		
-	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 8; j++) {
-			new CEnemy(64+j*64, 64+i*64);
-		}
-	}
+	
 	
 	/* —”Œn—ñ‚Ì•ÏX */
 	srand((unsigned)time(NULL));
@@ -124,11 +119,6 @@ void Init(void)
 	Soket::Instance().Init(GameManager::m_member_id);
 	PlayerDataManager::Build();
 
-	//new CPlayer(GameManager::m_member_id,CVector2D(300,600),&Soket::Instance().playerData);
-	////new CPlayer(1,CVector2D(300, 660));
-	////new CPlayer(3, CVector2D(600, 660));
-	//new CUI();
-	
 }
 
 

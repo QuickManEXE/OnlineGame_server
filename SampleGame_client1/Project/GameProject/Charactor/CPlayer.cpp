@@ -19,7 +19,7 @@ collision(&pos,28.0f,this,eLayer_Player)
 
 	m_playerData = pd;
 	
-	
+	rect = CRect(CVector2D(pos), CVector2D(32, 32));
 }
 
 CPlayer::~CPlayer()
@@ -40,10 +40,10 @@ void CPlayer::Update()
 	//プレイヤーの位置
 	//pos.x 横の位置　	pos.y　縦の位置
 	if (m_playerData->key[CInput::eRight]) {
-		m_playerData->pos.x += 4;
+		m_playerData->pos.y += 4;
 	}
 	if (m_playerData->key[CInput::eLeft]) {
-		m_playerData->pos.x -= 4;
+		m_playerData->pos.y -= 4;
 	}
 
 	if (PUSH(CInput::eButton1)) {
@@ -60,15 +60,18 @@ void CPlayer::Update()
 	
 	//プレイヤー生成 x　y
 	//new CPlayer(pos);				//同じ場所にプレイヤーを生成する
+
+	rect = CRect(CVector2D(pos),CVector2D(32,32));
 }
 
 void CPlayer::Render()
 {
+	Utility::DrawQuad(pos, CVector2D(32, 32), CColorRGBA(0, 0, 1, 1));
 
-	img.SetPos(pos);
+	//img.SetPos(pos);
 
 	//描画処理
-	img.Draw();
+	//img.Draw();
 }
 
 void CPlayer::CallCollision(Collision * c)

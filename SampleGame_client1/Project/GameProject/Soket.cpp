@@ -66,13 +66,13 @@ void Soket::Run(PlayerDataManager::PlayerData* pd)
 		playerData->key[i] = 0;
 	}
 	
-	if (HOLD(CInput::eRight)) {
-		playerData->key[CInput::eRight] = 1;
-		playerData->pos.x += 4;
+	if (HOLD(CInput::eUp)) {
+		playerData->key[CInput::eUp] = 1;
+		playerData->pos.y -= 4;
 	}
-	if (HOLD(CInput::eLeft)) {
-		playerData->key[CInput::eLeft] = 1;
-		playerData->pos.x -= 4;
+	if (HOLD(CInput::eDown)) {
+		playerData->key[CInput::eDown] = 1;
+		playerData->pos.y += 4;
 	}	
 
 	int s = sendto(dst_socket, (char*)(playerData), sizeof(*playerData), 0, (struct sockaddr*)&dst_addr, sizeof(dst_addr));
