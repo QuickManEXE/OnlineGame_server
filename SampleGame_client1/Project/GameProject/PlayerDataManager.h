@@ -18,7 +18,9 @@ public:
 	};
 public:
 	std::map<int, MemberData> m_members_data;
+
 public:
 	void UpdateMembersData(PlayerData _playerData);
+
 	std::map<int, PlayerDataManager::MemberData> GetMembersData();
 };

@@ -13,6 +13,7 @@
 #include"GameManager.h"
 #include"Soket.h"
 #include"Charactor\CBall.h"
+#include"Charactor\CNetWorkObjectBase.h"
 
 void MainLoop(void) {
 	//---------------------------------------
@@ -119,6 +120,10 @@ void Init(void)
 	Soket::Build();
 	Soket::Instance().Init(GameManager::m_member_id);
 	PlayerDataManager::Build();
+
+	//CNetWorkDataManager::Build();
+	//CNetWorkDataManager::
+
 
 	new CBall(0,CVector2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 }

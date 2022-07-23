@@ -3,7 +3,10 @@
 
 void Soket::Init()
 {
-	
+	/* —”Œn—ñ‚Ì•ÏX */
+	srand((unsigned)time(NULL));
+	m_unique_member_id = rand();
+
 	WSAStartup(MAKEWORD(2, 0), &wsaData);
 
 	sock = socket(AF_INET, SOCK_DGRAM, 0);

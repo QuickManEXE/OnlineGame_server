@@ -54,6 +54,12 @@
     <ClInclude Include="Charactor\CBall.h">
       <Filter>Game\Charactor</Filter>
     </ClInclude>
+    <ClInclude Include="Charactor\CNetWorkObjectBase.h">
+      <Filter>Game\Charactor</Filter>
+    </ClInclude>
+    <ClInclude Include="Charactor\CPlayer2.h">
+      <Filter>Game\Charactor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -102,6 +108,12 @@
     </ClCompile>
     <ClCompile Include="PlayerDataManager.cpp" />
     <ClCompile Include="Charactor\CBall.cpp">
+      <Filter>Game\Charactor</Filter>
+    </ClCompile>
+    <ClCompile Include="Charactor\CNetWorkObjectBase.cpp">
+      <Filter>Game\Charactor</Filter>
+    </ClCompile>
+    <ClCompile Include="Charactor\CPlayer2.cpp">
       <Filter>Game\Charactor</Filter>
     </ClCompile>
   </ItemGroup>

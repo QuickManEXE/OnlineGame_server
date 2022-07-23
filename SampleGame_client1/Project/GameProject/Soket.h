@@ -3,6 +3,7 @@
 #include"Singleton/Singleton.h"
 #include"PlayerDataManager.h"
 
+
 class Soket : public Singleton<Soket>{
 public:
 

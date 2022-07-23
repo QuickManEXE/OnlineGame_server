@@ -17,7 +17,8 @@ public:
 
 	sockaddr_in fromaddr;
 	int addrlen = sizeof(fromaddr);
-
+private:
+	int m_unique_member_id;//この通信を行うサーバーのID
 public:
 	void Init();
 	void Run();

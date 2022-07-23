@@ -24,6 +24,8 @@
     <ClInclude Include="Charactor\CBall.h" />
     <ClInclude Include="Charactor\CEnemy.h" />
     <ClInclude Include="Charactor\CPlayer.h" />
+    <ClInclude Include="Charactor\CNetWorkObjectBase.h" />
+    <ClInclude Include="Charactor\CPlayer2.h" />
     <ClInclude Include="Effect\CEffect.h" />
     <ClInclude Include="Field\CField.h" />
     <ClInclude Include="GameController.h" />
@@ -47,6 +49,8 @@
     <ClCompile Include="Charactor\CBall.cpp" />
     <ClCompile Include="Charactor\CEnemy.cpp" />
     <ClCompile Include="Charactor\CPlayer.cpp" />
+    <ClCompile Include="Charactor\CNetWorkObjectBase.cpp" />
+    <ClCompile Include="Charactor\CPlayer2.cpp" />
     <ClCompile Include="Effect\CEffect.cpp" />
     <ClCompile Include="Field\CField.cpp" />
     <ClCompile Include="GameController.cpp" />
