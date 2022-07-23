@@ -12,6 +12,7 @@
 #include "Charactor/AnimData.h"
 #include"GameManager.h"
 #include"Soket.h"
+#include"Charactor\CBall.h"
 
 void MainLoop(void) {
 	//---------------------------------------
@@ -119,6 +120,7 @@ void Init(void)
 	Soket::Instance().Init(GameManager::m_member_id);
 	PlayerDataManager::Build();
 
+	new CBall(0,CVector2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 }
 
 

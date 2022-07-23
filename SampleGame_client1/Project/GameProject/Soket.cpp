@@ -14,7 +14,7 @@ void Soket::Init(int _member_id)
 
 	playerData.member_id = _member_id;
 
-	playerData.pos = CVector2D(300, 600);
+	playerData.pos = CVector2D(0, 600);
 
 	// WinSock‚Ì‰Šú‰»ˆ—(Version 2.0)
 	if (WSAStartup(MAKEWORD(2, 0), &wsa_data) != 0) {

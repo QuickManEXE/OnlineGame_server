@@ -51,6 +51,9 @@
       <Filter>Singleton</Filter>
     </ClInclude>
     <ClInclude Include="PlayerDataManager.h" />
+    <ClInclude Include="Charactor\CBall.h">
+      <Filter>Game\Charactor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -98,6 +101,9 @@
       <Filter>Singleton</Filter>
     </ClCompile>
     <ClCompile Include="PlayerDataManager.cpp" />
+    <ClCompile Include="Charactor\CBall.cpp">
+      <Filter>Game\Charactor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

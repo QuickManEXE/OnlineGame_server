@@ -16,7 +16,7 @@ void PlayerDataManager::UpdateMembersData(PlayerData _playerData)
 		//新しくエントリーする
 		printf("ID[%d]がエントリーしました\n", id);
 		MemberData* member_data = &m_members_data[id];
-		member_data->pointer = new CPlayer(id, CVector2D(300, 660),&member_data->playerData);
+		member_data->pointer = new CPlayer(id, CVector2D(0, 660),&member_data->playerData);
 		member_data->playerData = _playerData;
 		//m_members_data[id] = member_data;
 	}

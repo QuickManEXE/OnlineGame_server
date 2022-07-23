@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet\CBullet.h" />
     <ClInclude Include="Charactor\AnimData.h" />
+    <ClInclude Include="Charactor\CBall.h" />
     <ClInclude Include="Charactor\CEnemy.h" />
     <ClInclude Include="Charactor\CPlayer.h" />
     <ClInclude Include="Effect\CEffect.h" />
@@ -43,6 +44,7 @@
   <ItemGroup>
     <ClCompile Include="Bullet\CBullet.cpp" />
     <ClCompile Include="Charactor\AnimData.cpp" />
+    <ClCompile Include="Charactor\CBall.cpp" />
     <ClCompile Include="Charactor\CEnemy.cpp" />
     <ClCompile Include="Charactor\CPlayer.cpp" />
     <ClCompile Include="Effect\CEffect.cpp" />
