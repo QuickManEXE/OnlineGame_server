@@ -1,10 +1,9 @@
 #pragma once
 #include "../stdafx.h"
 #include "../System/Task.h"
-#include"../Soket.h"
+#include"../Singleton/Singleton.h"
 
 class CNetWorkObjectBase;
-
 
 class CNetWorkDataManager : public Singleton<CNetWorkDataManager> {
 public:
@@ -22,6 +21,14 @@ public:
 	};
 public:
 	std::map<int, NetWorkObjectData> m_network_objects_data;
+public:
+	WSADATA wsaData;
+
+	SOCKET sock;
+	struct sockaddr_in addr;
+
+	sockaddr_in fromaddr;
+	int addrlen = sizeof(fromaddr);
 public:
 	char server_ip_addr[32];
 	int port_number;
@@ -45,6 +52,7 @@ public:
 	int member_id;
 
 public:
+	void InitServer();
 	void InitClient();
 	void Finalize();
 	void ReceiveMembersData();
@@ -52,6 +60,10 @@ public:
 	void SendToObjectsData(std::map<int, NetWorkObjectData> od);
 	void UpdateAllByOwner();
 	void AddObjectData(int object_id, CVector3D pos);
+	void UpdateReciveAndSend();
+	std::map<int, NetWorkObjectData> GetObjectsData() {
+		return m_network_objects_data;
+	};
 };
 
 

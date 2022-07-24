@@ -21,15 +21,16 @@
   <ItemGroup>
     <ClInclude Include="Bullet\CBullet.h" />
     <ClInclude Include="Charactor\AnimData.h" />
+    <ClInclude Include="Charactor\CBall.h" />
     <ClInclude Include="Charactor\CEnemy.h" />
+    <ClInclude Include="Charactor\CNetWorkObjectBase.h" />
     <ClInclude Include="Charactor\CPlayer.h" />
+    <ClInclude Include="Charactor\CPlayer2.h" />
     <ClInclude Include="Effect\CEffect.h" />
     <ClInclude Include="Field\CField.h" />
     <ClInclude Include="GID.h" />
     <ClInclude Include="Global.h" />
-    <ClInclude Include="PlayerDataManager.h" />
     <ClInclude Include="Singleton\Singleton.h" />
-    <ClInclude Include="Soket.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System\Collision.h" />
     <ClInclude Include="System\CollisionCall.h" />
@@ -41,14 +42,15 @@
   <ItemGroup>
     <ClCompile Include="Bullet\CBullet.cpp" />
     <ClCompile Include="Charactor\AnimData.cpp" />
+    <ClCompile Include="Charactor\CBall.cpp" />
     <ClCompile Include="Charactor\CEnemy.cpp" />
+    <ClCompile Include="Charactor\CNetWorkObjectBase.cpp" />
     <ClCompile Include="Charactor\CPlayer.cpp" />
+    <ClCompile Include="Charactor\CPlayer2.cpp" />
     <ClCompile Include="Effect\CEffect.cpp" />
     <ClCompile Include="Field\CField.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PlayerDataManager.cpp" />
     <ClCompile Include="Singleton\Singleton.cpp" />
-    <ClCompile Include="Soket.cpp" />
     <ClCompile Include="System\Collision.cpp" />
     <ClCompile Include="System\Task.cpp" />
     <ClCompile Include="System\TaskLinker.cpp" />

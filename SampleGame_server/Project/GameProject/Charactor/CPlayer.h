@@ -2,22 +2,25 @@
 #include "../stdafx.h"
 #include "../System/Task.h"
 #include "../System/Collision.h"
+#include"../Soket.h"
 #include"../PlayerDataManager.h"
 
 class CPlayer : public Task , public CollisionCall{
-	friend class Soket;
-	friend class PlayerDataManager;
 private:
 	CImage		img;
 	CVector2D	pos;
 	Collision	collision;
+	CRect rect;
 
 	int member_id;
 
-	PlayerDataManager::PlayerData m_playerData;
 public:
-	CPlayer(int id,const CVector2D pos);
-	CPlayer(int id,const float x, const float y);
+
+	PlayerDataManager::PlayerData* m_playerData;
+
+public:
+	CPlayer(int id,const CVector2D pos, PlayerDataManager::PlayerData* pd);
+	CPlayer(int id,const float x, const float y,PlayerDataManager::PlayerData* pd);
 	~CPlayer();
 
 	void Update();

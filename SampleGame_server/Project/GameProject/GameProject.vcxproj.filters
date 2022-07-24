@@ -40,10 +40,17 @@
     <ClInclude Include="System\TaskManager.h">
       <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="Soket.h" />
-    <ClInclude Include="PlayerDataManager.h" />
     <ClInclude Include="Singleton\Singleton.h">
       <Filter>Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Charactor\CBall.h">
+      <Filter>Game\Charactor</Filter>
+    </ClInclude>
+    <ClInclude Include="Charactor\CNetWorkObjectBase.h">
+      <Filter>Game\Charactor</Filter>
+    </ClInclude>
+    <ClInclude Include="Charactor\CPlayer2.h">
+      <Filter>Game\Charactor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -81,10 +88,17 @@
     <ClCompile Include="System\TaskManager.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="Soket.cpp" />
-    <ClCompile Include="PlayerDataManager.cpp" />
     <ClCompile Include="Singleton\Singleton.cpp">
       <Filter>Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Charactor\CBall.cpp">
+      <Filter>Game\Charactor</Filter>
+    </ClCompile>
+    <ClCompile Include="Charactor\CNetWorkObjectBase.cpp">
+      <Filter>Game\Charactor</Filter>
+    </ClCompile>
+    <ClCompile Include="Charactor\CPlayer2.cpp">
+      <Filter>Game\Charactor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

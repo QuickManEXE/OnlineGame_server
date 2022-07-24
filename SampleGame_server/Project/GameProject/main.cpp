@@ -12,6 +12,7 @@
 #include "Charactor/AnimData.h"
 #include"PlayerDataManager.h"
 #include"Soket.h"
+#include"Charactor\CNetWorkObjectBase.h"
 
 void MainLoop(void) {
 	//---------------------------------------
@@ -20,7 +21,8 @@ void MainLoop(void) {
 	
 	TaskManager::GetInstance()->KillAppoint();
 
-	Soket::Instance().Run();
+	//Soket::Instance().Run();
+	CNetWorkDataManager::Instance().UpdateReciveAndSend();
 
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
@@ -108,11 +110,14 @@ void Init(void)
 	ADD_RESOURCE("Effect_Bomb", CImage::CreateImage("Effect_Bomb.png", effectAnimData,96,96));
 	
 
-	PlayerDataManager::Build();
-	Soket::Build();
-	Soket::Instance().Init();
+	//PlayerDataManager::Build();
+	//Soket::Build();
+	//Soket::Instance().Init();
 
-	
+	CNetWorkDataManager::Build();
+	CNetWorkDataManager::Instance().InitServer();
+
+
 }
 
 

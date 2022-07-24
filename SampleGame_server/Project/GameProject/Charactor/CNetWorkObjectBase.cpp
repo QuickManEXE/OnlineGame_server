@@ -1,11 +1,36 @@
 #include "CNetWorkObjectBase.h"
-
 #include<iostream>
 
 #include"CPlayer2.h"
 #include"CBall.h"
 
 #pragma comment(lib, "Ws2_32.lib")
+
+
+void CNetWorkDataManager::InitServer()
+{
+	/* 乱数系列の変更 */
+	srand((unsigned)time(NULL));
+	member_id = rand();
+
+	WSAStartup(MAKEWORD(2, 0), &wsaData);
+
+	sock = socket(AF_INET, SOCK_DGRAM, 0);
+
+	addr.sin_family = AF_INET;
+	addr.sin_port = htons(12345);
+	addr.sin_addr.S_un.S_addr = INADDR_ANY;
+
+	bind(sock, (struct sockaddr*)&addr, sizeof(addr));
+
+	// ここで、ノンブロッキングに設定しています。
+	// val = 0でブロッキングモードに設定できます。
+	// ソケットの初期設定はブロッキングモードです。
+	u_long val = 1;
+	ioctlsocket(sock, FIONBIO, &val);
+
+	
+}
 
 void CNetWorkDataManager::InitClient()
 {
@@ -157,6 +182,61 @@ void CNetWorkDataManager::AddObjectData(int object_id,CVector3D pos)
 	case 1:
 		member_data->object_pointer = new CBall(eId_Bullet,CVector2D(0, 660), &member_data->object_data);
 		break;
+	}
+	
+}
+
+void CNetWorkDataManager::UpdateReciveAndSend()
+{
+
+	sockaddr_in fromaddr;
+	int addrlen = sizeof(fromaddr);
+
+	while (1) {
+
+
+		{//受信
+
+			//受信データ最大サイズ
+			const int size_max = 1024;
+			//領域確保
+			char* buf = new char[size_max];
+			//読み込みポインタ用
+			char* b = buf;
+			//受信
+			int n = recvfrom(sock, buf, size_max, 0, (struct sockaddr*)&fromaddr, &addrlen); printf("受け取った%d\n", n);
+			if (n == SOCKET_ERROR)break;
+			//最初のデータ：人数
+			int player_cnt = *((int*)b);
+			b += sizeof(int);
+			//人数分読み込み
+			for (int i = 0; i < player_cnt; i++, b += sizeof(ObjectDataForSocket)) {
+				ObjectDataForSocket* data = (ObjectDataForSocket*)b;
+				UpdateObjectsData(*data);
+			}
+			delete buf;
+		}
+
+
+		{//送信
+
+			std::map<int, NetWorkObjectData> members_data = GetObjectsData();
+			//送信データサイズ int + MemberData * 人数
+			UINT bufsize = sizeof(int) + sizeof(ObjectDataForSocket) * members_data.size();
+			char* buf = new char[bufsize];
+			//人数記録
+			int* num = (int*)buf;
+			*num = members_data.size();
+			//プレイヤーの各データを記録
+			ObjectDataForSocket* pd = (ObjectDataForSocket*)(buf + 4);
+			for (auto v : members_data) {
+				*pd = (*v.second.object_pointer->GetObjectData());
+				pd++;
+			}
+			//int s = sendto(sock, (char*)(&members_data), sizeof(members_data), 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
+			int s = sendto(sock, buf, bufsize, 0, (struct sockaddr*)&fromaddr, sizeof(fromaddr));
+			printf("%d\n", s);
+		}
 	}
 	
 }

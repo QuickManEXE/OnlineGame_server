@@ -23,9 +23,11 @@ void MainLoop(void) {
 	TaskManager::GetInstance()->KillAppoint();
 	
 	
-	Soket::Instance().Run(&Soket::Instance().playerData);
-	Soket::Instance().ReceiveMembersData();
-	
+	//Soket::Instance().Run(&Soket::Instance().playerData);
+	//Soket::Instance().ReceiveMembersData();
+	CNetWorkDataManager::Instance().UpdateAllByOwner();
+	CNetWorkDataManager::Instance().ReceiveMembersData();
+
 
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
@@ -115,17 +117,19 @@ void Init(void)
 	
 	/* óêêîånóÒÇÃïœçX */
 	srand((unsigned)time(NULL));
-	GameManager::m_member_id = rand();
+	//GameManager::m_member_id = rand();
 
-	Soket::Build();
-	Soket::Instance().Init(GameManager::m_member_id);
-	PlayerDataManager::Build();
+	//Soket::Build();
+	//Soket::Instance().Init(GameManager::m_member_id);
+	//PlayerDataManager::Build();
 
-	//CNetWorkDataManager::Build();
-	//CNetWorkDataManager::
+	CNetWorkDataManager::Build();
+	CNetWorkDataManager::Instance().InitClient();
 
+	CNetWorkDataManager::Instance().AddObjectData(0, CVector3D(300, 600, 0));
+	CNetWorkDataManager::Instance().AddObjectData(1, CVector3D(SCREEN_WIDTH/2,SCREEN_HEIGHT/2,0));
 
-	new CBall(0,CVector2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
+	//new CBall(0,CVector2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 }
 
 
