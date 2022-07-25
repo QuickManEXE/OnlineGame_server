@@ -60,6 +60,12 @@
     <ClInclude Include="Charactor\CPlayer2.h">
       <Filter>Game\Charactor</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManager\SceneManager.h">
+      <Filter>SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\TitleScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -116,6 +122,12 @@
     <ClCompile Include="Charactor\CPlayer2.cpp">
       <Filter>Game\Charactor</Filter>
     </ClCompile>
+    <ClCompile Include="SceneManager\SceneManager.cpp">
+      <Filter>SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\TitleScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -144,6 +156,12 @@
     </Filter>
     <Filter Include="Singleton">
       <UniqueIdentifier>{5b36d47e-2f59-4eb6-90f0-214582404ff2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneManager">
+      <UniqueIdentifier>{0bdc3327-0c1e-495e-a998-4a2fe43f2e64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
+      <UniqueIdentifier>{2632f88c-0e53-4119-bc93-9c39716203d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -14,6 +14,10 @@
 #include"Soket.h"
 #include"Charactor\CBall.h"
 #include"Charactor\CNetWorkObjectBase.h"
+#include"SceneManager\SceneManager.h"
+#include"Scene\TitleScene.h"
+#include<iostream>
+
 
 void MainLoop(void) {
 	//---------------------------------------
@@ -22,19 +26,20 @@ void MainLoop(void) {
 	
 	TaskManager::GetInstance()->KillAppoint();
 	
-	
 	//Soket::Instance().Run(&Soket::Instance().playerData);
 	//Soket::Instance().ReceiveMembersData();
 	CNetWorkDataManager::Instance().UpdateAllByOwner();
 	CNetWorkDataManager::Instance().ReceiveMembersData();
 
 
+
+	SceneManager::Instance().UpdateSceneManager();
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
 
 
 	//各種描画
-
+	SceneManager::Instance().RenderSceneManager();
 	TaskManager::GetInstance()->RenderAll();
 
 
@@ -115,21 +120,30 @@ void Init(void)
 	ADD_RESOURCE("Effect_Bomb", CImage::CreateImage("Effect_Bomb.png", effectAnimData,96,96));
 	
 	
-	/* 乱数系列の変更 */
-	srand((unsigned)time(NULL));
-	//GameManager::m_member_id = rand();
-
-	//Soket::Build();
-	//Soket::Instance().Init(GameManager::m_member_id);
-	//PlayerDataManager::Build();
+	
 
 	CNetWorkDataManager::Build();
 	CNetWorkDataManager::Instance().InitClient();
 
-	CNetWorkDataManager::Instance().AddObjectData(0, CVector3D(300, 600, 0));
-	CNetWorkDataManager::Instance().AddObjectData(1, CVector3D(SCREEN_WIDTH/2,SCREEN_HEIGHT/2,0));
+	int player_num;
+	// ユーザ入力
+	std::cout << "Player番号を入力してください" << std::endl;
+	std::cin >> player_num;
+	
+	if (player_num == 1) {
+		CNetWorkDataManager::Instance().AddObjectData(0, CVector3D(32, 600, 0));
+		CNetWorkDataManager::Instance().AddObjectData(1, CVector3D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+	}
+	else {
+		CNetWorkDataManager::Instance().AddObjectData(0, CVector3D(1280, 600, 0));
 
-	//new CBall(0,CVector2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
+	}
+
+	SceneManager::Build();
+	SceneManager::Instance().InitializeSceneManager();
+	SceneManager::Instance().JumpScene(SetupTitleScene);
+	
+
 }
 
 

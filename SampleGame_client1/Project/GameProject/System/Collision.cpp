@@ -28,6 +28,19 @@ Collision::Collision(CVector2D *p, float rad, CollisionCall *obj, unsigned int b
 	TaskManager::GetInstance()->AddColl(this);
 }
 
+Collision::Collision(CRect* rect, CollisionCall* obj, unsigned int body):
+	Task(eId_Collision, eUp_Collision, eRd_Collision),
+	mp_obj(nullptr),
+	m_type(0), m_active(true)
+{
+	mp_obj = obj;
+	m_rect.rect = rect;
+	m_type = eCollision_Rect;
+	m_body = body;
+	//Õ“Ë”»’è“o˜^
+	TaskManager::GetInstance()->AddColl(this);
+}
+
 Collision::~Collision()
 {
 	TaskManager::GetInstance()->Remove(this);
@@ -58,6 +71,16 @@ void Collision::CheckCollision(Task * t)
 			break;
 		}
 		break;
+	case eCollision_Rect:
+		switch (c->m_type)
+		{
+		case eCollision_Rect:
+			hit = CollisionRect(this, c);
+			break;
+		default:
+			assert(false);
+			break;
+		}
 	}
 	//ƒqƒbƒgƒtƒ‰ƒOONŽž
 	if (hit)
@@ -74,5 +97,16 @@ bool Collision::CollosionShpere(Collision *c1, Collision *c2)
 	if(v.LengthSq()>pow(c1->m_shpere.rad+ c2->m_shpere.rad,2))
 		return false;
 	return true;
+}
+
+bool Collision::CollisionRect(Collision* c1, Collision* c2)
+{
+	CRect rect1 = *c1->m_rect.rect;
+	CRect rect2 = *c2->m_rect.rect;
+
+	if (rect1.m_left <= rect2.m_right && rect1.m_right >= rect2.m_left &&
+		rect1.m_top <= rect2.m_bottom && rect1.m_bottom >= rect2.m_top)
+		return true;
+	return false;
 }
 

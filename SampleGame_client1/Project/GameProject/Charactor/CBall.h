@@ -13,6 +13,9 @@ private:
 
 	float rad;
 
+	float speed;
+
+	CRect rect;
 	CVector2D vec;
 public:
 	CBall(int id, const CVector2D p,CNetWorkDataManager::ObjectDataForSocket* od);

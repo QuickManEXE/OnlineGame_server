@@ -3,12 +3,12 @@
 #include "System/Task.h"
 
 
-class GameManager : public Task {
+class Game : public Task {
 public:
 	static int m_member_id;
 public:
-	GameManager();
-	~GameManager();
+	Game();
+	~Game();
 
 	void Update();
 	void Render();

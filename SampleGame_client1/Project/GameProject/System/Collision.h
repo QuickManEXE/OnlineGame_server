@@ -21,6 +21,7 @@ enum ECOLLISION_Layer{
 };
 enum ECOLLISION_Type {
 	eCollision_Shpere,
+	eCollision_Rect,
 };
 
 
@@ -31,6 +32,11 @@ struct T_Shpere
 	float		rad;	//半径
 };
 
+struct T_Rect
+{
+	CRect *rect;
+};
+
 
 class Collision : public Task
 {	
@@ -38,6 +44,7 @@ private:
 	CollisionCall	*mp_obj;		//衝突判定オブジェクトポインタ
 	//各形状データポインタ
 	T_Shpere		m_shpere;		
+	T_Rect           m_rect;
 	int				 m_type;		//形状タイプ
 	unsigned int	 m_body;		//自身マスク
 	bool			m_active;		//衝突有効フラグ
@@ -46,9 +53,11 @@ public:
 
 	//球用コンストラクタ
 	Collision(CVector2D *p,float rad, CollisionCall *obj, unsigned int body);
+	Collision(CRect* rect, CollisionCall* obj, unsigned int body);
 	~Collision();
 	void CheckCollision(Task *t);										//各衝突判定チェック
 	static bool CollosionShpere(Collision *c1, Collision *c2);			//球対球
+	static bool CollisionRect(Collision* c1, Collision* c2);
 
 																		//衝突球取得
 	const T_Shpere *GetColllisionShpere() const

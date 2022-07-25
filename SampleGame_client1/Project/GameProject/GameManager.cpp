@@ -1,21 +1,23 @@
 #include "GameManager.h"
+#include"SceneManager\SceneManager.h"
 
 
-int GameManager::m_member_id;
+Game::Game()
+{
+	
+	
+}
 
-
-GameManager::GameManager()
+Game::~Game()
 {
 }
 
-GameManager::~GameManager()
+void Game::Update()
 {
+	
 }
 
-void GameManager::Update()
+void Game::Render()
 {
-}
-
-void GameManager::Render()
-{
+	
 }

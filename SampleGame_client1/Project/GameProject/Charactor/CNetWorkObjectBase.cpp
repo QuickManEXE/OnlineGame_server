@@ -152,10 +152,10 @@ void CNetWorkDataManager::AddObjectData(int object_id,CVector3D pos)
 
 	switch (object_id) {
 	case 0:
-		member_data->object_pointer = new CPlayer2(CVector2D(0, 660), &member_data->object_data);
+		member_data->object_pointer = new CPlayer2(CVector2D(pos.x, pos.y), &member_data->object_data);
 		break;
 	case 1:
-		member_data->object_pointer = new CBall(eId_Bullet,CVector2D(0, 660), &member_data->object_data);
+		member_data->object_pointer = new CBall(eId_Bullet,CVector2D(pos.x, pos.y), &member_data->object_data);
 		break;
 	}
 	
