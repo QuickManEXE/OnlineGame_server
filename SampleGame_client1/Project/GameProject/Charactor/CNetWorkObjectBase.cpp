@@ -106,7 +106,9 @@ void CNetWorkDataManager::ReceiveMembersData()
 		//l”•ª“Ç‚İ‚İ
 		for (int i = 0; i < player_cnt; i++, b += sizeof(ObjectDataForSocket)) {
 			ObjectDataForSocket* data = (ObjectDataForSocket*)b;
-			UpdateObjectsData(*data);
+			if (data->owner_id != member_id) {
+				UpdateObjectsData(*data);
+			}
 		}
 		delete buf;
 	}
