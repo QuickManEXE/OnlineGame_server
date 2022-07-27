@@ -1,6 +1,0 @@
-#include "BehaviorTree.h"
-#include "ActionBase.h"
-#include "NodeBase.h"
-#include "ExecJudgmentBase.h"
-#include "Enemy.h"
-#include "BehaviorData.h"
