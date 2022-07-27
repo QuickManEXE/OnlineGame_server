@@ -19,6 +19,12 @@
     <ClInclude Include="Game\Player.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Singleton\Singleton.h">
+      <Filter>Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWorkObjectBase\NetWorkObjectBase.h">
+      <Filter>NetWorkObjectBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Base\Base.cpp">
@@ -37,6 +43,12 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="sample.cpp" />
+    <ClCompile Include="Singleton\Singleton.cpp">
+      <Filter>Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="NetWorkObjectBase\NetWorkObjectBase.cpp">
+      <Filter>NetWorkObjectBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -44,6 +56,12 @@
     </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{d82623ed-834f-4330-b58b-b293392c05c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singleton">
+      <UniqueIdentifier>{6e42b932-cd60-48b7-8716-218adb8e73b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWorkObjectBase">
+      <UniqueIdentifier>{0af665a7-244f-4145-8376-9bdd09e8abac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

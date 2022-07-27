@@ -8,9 +8,13 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <math.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
 #include <windows.h>
+
 
 #include "GLLibrary/GL.h"
 

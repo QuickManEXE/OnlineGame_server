@@ -10,7 +10,6 @@
 #include "UI/CUI.h"
 #include "Field/CField.h"
 #include "Charactor/AnimData.h"
-#include"GameManager.h"
 #include"Soket.h"
 #include"Charactor\CBall.h"
 #include"Charactor\CNetWorkObjectBase.h"
