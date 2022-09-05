@@ -4,7 +4,7 @@
 //コンストラクタ　オブジェクト生成時に呼ばれる
 //　　　　　引数にpos(座標)を受け取る
 //　　　　　　　　　　　　　　基底クラス（Base）へ種類の情報を渡す
-Player::Player(const CVector3D& pos) : Base(eId_Player){
+Player::Player(const CVector3D& pos,NetWorkObjectManager::ObjectDataForSocket* od) : NetWorkObjectBase(eId_Player,od){
 	//読み込み済みの画像を複製
 	m_model = COPY_RESOURCE("Player", CModelObj);
 	//m_model.SetScale(0.01f, 0.01f, 0.01f);
@@ -52,9 +52,61 @@ void Player::Update() {
 
 
 }
+void Player::UpdateByOwner()
+{
+
+	CVector3D* m_pos = &GetObjectData()->pos;
+
+	CVector3D* m_rot = &GetObjectData()->rot;
+
+	CVector3D* m_vec = &GetObjectData()->vec;
+
+	//移動速度設定
+	const float speed = 0.012f;
+	//前方向を求める
+	CVector3D dir = CVector3D(sin(m_rot->y), 0, cos(m_rot->y));
+
+	//上キーを押していれば
+	if (HOLD(CInput::eUp))
+		//前に移動
+		*m_vec += dir * speed;
+	//左キーを押していれば
+	if (HOLD(CInput::eLeft))
+		//左に回転
+		m_rot->y += DtoR(2);
+	//右キーを押していれば
+	if (HOLD(CInput::eRight))
+		//右に回転
+		m_rot->y += DtoR(-2);
+	*m_vec *= 0.94f;
+	if (m_vec->Length() < speed / 2) *m_vec = CVector3D::zero;
+	*m_pos += *m_vec;
+	/*if (HOLD(CInput::eRight))
+		m_vec.x -= speed;
+
+	if (HOLD(CInput::eLeft))
+		m_pos.x += speed;
+		*/
+		//ボタン5を押せば
+	if (PUSH(CInput::eButton5))
+		//弾の生成とリストへの追加
+		//					自身の座標と回転を渡す
+		Base::Add(new Bullet(*m_pos, m_rot->y, 0.4f, eId_Player_Bullet));
+
+
+
+
+
+
+}
 //描画処理
 //Base::DrawALL関数内で呼ばれている
 void Player::Draw() {
+
+
+	CVector3D m_pos = GetObjectData()->pos;
+	CVector3D m_rot = GetObjectData()->rot;
+
 	//表示位置の設定
 	m_model.SetPos(m_pos);
 	//回転値を設定

@@ -7,7 +7,7 @@
 #include "Base/Base.h"
 #include "Game/Player.h"
 #include "Game/Enemy.h"
-
+#include"NetWorkObjectBase\NetWorkObjectBase.h"
 
 void MainLoop(void) {
 
@@ -16,6 +16,7 @@ void MainLoop(void) {
 	//ゲーム中はこの関数_を1秒間に60回呼び出している
 	//--------------------------------------------------------------
 	Base::CheckKillALL();
+	NetWorkObjectManager::Instance().Update(NetWorkObjectManager::Instance().m_mode);
 	Base::UpdateALL();
 	Base::HitCheckALL();
 	Base::DrawALL();
@@ -93,7 +94,7 @@ void Init(void)
 	//初期化
 
 
-	ADD_RESOURCE("Player", CModel::CreateModel("Charactor/F16/F16.obj"));
+	/*ADD_RESOURCE("Player", CModel::CreateModel("Charactor/F16/F16.obj"));
 
 	Base::Add(new Player(CVector3D(0,0,-10)));
 
@@ -101,8 +102,21 @@ void Init(void)
 		for (int j = -1; j <= 1; j++) {
 			Base::Add(new Enemy(CVector3D(j * 15, 0, 10+i*15), 0));
 		}
-	}
+	}*/
 
+
+	NetWorkObjectManager::Build();
+
+	int mode;
+
+	// ユーザ入力
+	std::cout << "接続モードを入力してください" << std::endl;
+	std::cin >> mode;
+	NetWorkObjectManager::Instance().m_mode = (NetWorkObjectManager::E_MODE)mode;
+
+	NetWorkObjectManager::Instance().Init(NetWorkObjectManager::Instance().m_mode);
+
+	NetWorkObjectManager::Instance().AddObjectData(0, CVector3D(0, 0, -10));
 }
 
 

@@ -1,5 +1,4 @@
 #pragma once
-#include "../stdafx.h"
 #include "../Base/Base.h"
 #include"../Singleton/Singleton.h"
 
@@ -14,6 +13,7 @@ public:
 		int owner_id;//このオブジェクトを管理するユーザーのユニークなID
 		int object_id;//これが何のオブジェクトか判別するID
 		CVector3D pos;//座標
+		CVector3D rot;//回転値
 		CVector3D vec;//移動量
 		int key[CInput::eKeyMax]{ 0 };
 	};

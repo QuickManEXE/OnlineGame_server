@@ -1,5 +1,5 @@
 #include "NetWorkObjectBase.h"
-
+#include"../Game/Player.h"
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -173,11 +173,14 @@ void  NetWorkObjectManager::UpdateObjectsData(ObjectDataForSocket od)
 		//新しくエントリーする
 		printf("オブジェクトID[%d]がエントリーしました\n", id);
 		NetWorkObjectData* member_data = &m_network_objects_data[id];
+		Player* p;
 		switch (od.object_id)
 		{
 		case 0:
-			//member_data->object_pointer = new CPlayer2(CVector2D(0, 660), &member_data->object_data);
-			//member_data->object_data = od;
+			p = new Player(CVector3D(0, 0, -10), &member_data->object_data);
+			Base::Add(p);
+			member_data->object_pointer = p;
+			member_data->object_data = od;
 			break;
 		case 1:
 			//member_data->object_pointer = new CBall(eId_Bullet,CVector2D(0, 660), &member_data->object_data);
@@ -255,10 +258,13 @@ void NetWorkObjectManager::AddObjectData(int object_id,CVector3D pos)
 	member_data->object_data.unique_id = id;
 	member_data->object_data.owner_id = m_unique_id;
 	member_data->object_data.object_id = object_id;
-
+	
+	Player* p;
 	switch (object_id) {
 	case 0:
-		//member_data->object_pointer = new CPlayer2(CVector2D(pos.x, pos.y), &member_data->object_data);
+		p = new Player(pos, &member_data->object_data);
+		Base::Add(p);
+		member_data->object_pointer = p;
 		break;
 	case 1:
 		//member_data->object_pointer = new CBall(eId_Bullet,CVector2D(pos.x, pos.y), &member_data->object_data);

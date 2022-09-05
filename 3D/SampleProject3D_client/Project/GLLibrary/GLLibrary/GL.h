@@ -9,6 +9,8 @@
 #endif
 
 #include <math.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
 #include <windows.h>
 #include <string.h>
 #define GLEW_STATIC
