@@ -118,7 +118,7 @@ void Init(void)
 
 	if (NetWorkObjectManager::Instance().m_mode == NetWorkObjectManager::E_MODE::ECLIENT) {
 
-		NetWorkObjectManager::Instance().AddObjectData(0, CVector3D(0, 0, -10));
+		NetWorkObjectManager::Instance().AddObjectData(eId_Player, CVector3D(0, 0, -10));
 	}
 }
 

@@ -176,17 +176,17 @@ void  NetWorkObjectManager::UpdateObjectsData(ObjectDataForSocket od)
 		Player* p;
 		switch (od.object_id)
 		{
-		case 0:
+		case eId_Player:
 			p = new Player(CVector3D(0, 0, -10), &member_data->object_data);
 			Base::Add(p);
 			member_data->object_pointer = p;
 			member_data->object_data = od;
 			break;
-		case 1:
+		case eId_Enemy:
 			//member_data->object_pointer = new CBall(eId_Bullet,CVector2D(0, 660), &member_data->object_data);
 			//member_data->object_data = od;
 			break;
-		case 2:
+		case eId_Effect:
 			break;
 		default:
 			break;
@@ -261,12 +261,12 @@ void NetWorkObjectManager::AddObjectData(int object_id,CVector3D pos)
 	
 	Player* p;
 	switch (object_id) {
-	case 0:
+	case eId_Player:
 		p = new Player(pos, &member_data->object_data);
 		Base::Add(p);
 		member_data->object_pointer = p;
 		break;
-	case 1:
+	case eId_Enemy:
 		//member_data->object_pointer = new CBall(eId_Bullet,CVector2D(pos.x, pos.y), &member_data->object_data);
 		break;
 	}

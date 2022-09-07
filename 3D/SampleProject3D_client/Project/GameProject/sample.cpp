@@ -116,7 +116,10 @@ void Init(void)
 
 	NetWorkObjectManager::Instance().Init(NetWorkObjectManager::Instance().m_mode);
 
-	NetWorkObjectManager::Instance().AddObjectData(0, CVector3D(0, 0, -10));
+	if (NetWorkObjectManager::Instance().m_mode == NetWorkObjectManager::E_MODE::ECLIENT) {
+
+		NetWorkObjectManager::Instance().AddObjectData(eId_Player, CVector3D(0, 0, -10));
+	}
 }
 
 
