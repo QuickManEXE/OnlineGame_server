@@ -94,9 +94,9 @@ void Init(void)
 	//初期化
 
 
-	/*ADD_RESOURCE("Player", CModel::CreateModel("Charactor/F16/F16.obj"));
+	ADD_RESOURCE("Player", CModel::CreateModel("Charactor/F16/F16.obj"));
 
-	Base::Add(new Player(CVector3D(0,0,-10)));
+	/*Base::Add(new Player(CVector3D(0,0,-10)));
 
 	for (int i = 0; i < 3; i++) {
 		for (int j = -1; j <= 1; j++) {
@@ -110,7 +110,7 @@ void Init(void)
 	int mode;
 
 	// ユーザ入力
-	std::cout << "接続モードを入力してください" << std::endl;
+	std::cout << "接続モードを入力してください SERVER=0 CLIENT=1" << std::endl;
 	std::cin >> mode;
 	NetWorkObjectManager::Instance().m_mode = (NetWorkObjectManager::E_MODE)mode;
 

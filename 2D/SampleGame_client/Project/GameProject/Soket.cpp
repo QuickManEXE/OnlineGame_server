@@ -1,5 +1,4 @@
 #include "Soket.h"
-#include"GameManager.h"
 #include<iostream>
 
 
