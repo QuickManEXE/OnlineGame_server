@@ -2,16 +2,15 @@
 #include "../Base/Base.h"
 #include"../NetWorkObjectBase/NetWorkObjectBase.h"
 
-class Bullet : public NetWorkObjectBase {
+class Bullet : public Base {
 	float m_speed;
 	int m_cnt;
 public:
 	//コンストラクタ
 	//引数　:発射位置
-	Bullet(const CVector3D& pos, float rot,float speed,int bullet_type, NetWorkObjectManager::ObjectDataForSocket* od);
+	Bullet(const CVector3D& pos, float rot,float speed,int bullet_type);
 	//移動の処理
 	void Update();
-	void UpdateByOwner()override;
 	//描画の処理
 	void Draw();
 

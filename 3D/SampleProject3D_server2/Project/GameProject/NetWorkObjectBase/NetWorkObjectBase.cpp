@@ -189,11 +189,6 @@ void  NetWorkObjectManager::UpdateObjectsData(ObjectDataForSocket od)
 			break;
 		case eId_Effect:
 			break;
-		case eId_Player_Bullet:
-			p = new Bullet(CVector3D::zero, 0, 1.0f, eId_Player_Bullet, &member_data->object_data);
-			Base::Add(p);
-			member_data->object_pointer = p;
-			break;
 		default:
 			break;
 		}
@@ -275,21 +270,19 @@ void NetWorkObjectManager::AddObjectData(int object_id,CVector3D pos)
 	case eId_Enemy:
 		//member_data->object_pointer = new CBall(eId_Bullet,CVector2D(pos.x, pos.y), &member_data->object_data);
 		break;
-	case eId_Player_Bullet:
-		p = new Bullet(pos,0,1.0f,eId_Player_Bullet, &member_data->object_data);
-		Base::Add(p);
-		member_data->object_pointer = p;
-		break;
 	}
 	
 }
 
 void NetWorkObjectManager::RemoveObjectData()
 {
+	
+
 }
 
 void NetWorkObjectManager::RemoveObjectDataAll()
 {
+
 }
 
 void NetWorkObjectManager::SendToObjectsData(std::map<int, NetWorkObjectData> od)
