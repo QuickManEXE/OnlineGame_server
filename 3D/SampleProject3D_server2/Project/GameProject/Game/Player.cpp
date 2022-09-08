@@ -48,7 +48,7 @@ void Player::Update() {
 
 	if (GetObjectData()->key[CInput::eButton5] == 1) {
 
-		if (PUSH(CInput::eButton5))
+		//if (PUSH(CInput::eButton5))
 		//弾の生成とリストへの追加
 		//					自身の座標と回転を渡す
 		Base::Add(new Bullet(m_pos, m_rot.y,0.4f,eId_Player_Bullet));

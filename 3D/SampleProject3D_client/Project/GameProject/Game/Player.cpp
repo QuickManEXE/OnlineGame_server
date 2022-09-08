@@ -45,11 +45,17 @@ void Player::Update() {
 		m_pos.x += speed;
 		*/
 	//ƒ{ƒ^ƒ“5‚ð‰Ÿ‚¹‚Î
-	if (PUSH(CInput::eButton5))
+
+	if (GetObjectData()->key[CInput::eButton5] == 1) {
+
+		//if (PUSH(CInput::eButton5))
 		//’e‚Ì¶¬‚ÆƒŠƒXƒg‚Ö‚Ì’Ç‰Á
 		//					Ž©g‚ÌÀ•W‚Æ‰ñ“]‚ð“n‚·
 		Base::Add(new Bullet(m_pos, m_rot.y,0.4f,eId_Player_Bullet));
 
+	}
+
+	
 
 }
 void Player::UpdateByOwner()
@@ -91,8 +97,8 @@ void Player::UpdateByOwner()
 	if (PUSH(CInput::eButton5))
 		//’e‚Ì¶¬‚ÆƒŠƒXƒg‚Ö‚Ì’Ç‰Á
 		//					Ž©g‚ÌÀ•W‚Æ‰ñ“]‚ð“n‚·
-		Base::Add(new Bullet(*m_pos, m_rot->y, 0.4f, eId_Player_Bullet));
-
+		//Base::Add(new Bullet(*m_pos, m_rot->y, 0.4f, eId_Player_Bullet));
+		GetObjectData()->key[CInput::eButton5] = 1;
 
 
 

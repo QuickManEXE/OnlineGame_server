@@ -232,6 +232,10 @@ void NetWorkObjectManager::UpdateAllByOwner()
 		auto obj = (*itr).second.object_pointer;
 		if (obj->GetObjectData()->owner_id == m_unique_id) {
 			
+			for (int i = 0; i < CInput::eKeyMax; i++) {
+				obj->GetObjectData()->key[i] = 0;
+			}
+
 			obj->UpdateByOwner();
 			
 			NetWorkObjectData tmp_data;

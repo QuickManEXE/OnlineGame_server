@@ -1,9 +1,10 @@
 #include "NetWorkObjectBase.h"
 #include"../Game/Player.h"
+#include"../Game/Bullet.h"
 
 #pragma comment(lib, "Ws2_32.lib")
 
-//サーバーかクライアントごとに初期化の内容を変える
+
 void NetWorkObjectManager::Init(E_MODE _mode)
 {
 	switch (m_mode)
@@ -19,7 +20,6 @@ void NetWorkObjectManager::Init(E_MODE _mode)
 	}
 }
 
-//サーバーかクライアントごとにアップデートの内容を変える
 void NetWorkObjectManager::Update(E_MODE _mode)
 {
 	switch (m_mode)
@@ -36,7 +36,6 @@ void NetWorkObjectManager::Update(E_MODE _mode)
 	}
 }
 
-//サーバーの初期化
 void NetWorkObjectManager::InitServer()
 {
 	/* 乱数系列の変更 */
@@ -60,7 +59,6 @@ void NetWorkObjectManager::InitServer()
 	ioctlsocket(sock, FIONBIO, &val);
 }
 
-//サーバーが行うデータの受信と返信
 void NetWorkObjectManager::UpdateReciveAndSend()
 {
 	sockaddr_in fromaddr;
@@ -114,7 +112,6 @@ void NetWorkObjectManager::UpdateReciveAndSend()
 	}
 }
 
-//クライアント側の初期化
 void NetWorkObjectManager::InitClient()
 {
 	/* 乱数系列の変更 */
@@ -154,7 +151,6 @@ void NetWorkObjectManager::InitClient()
 	printf("あなたのメンバーIDは[%d]です\n", m_unique_id);
 }
 
-//終了処理
 void NetWorkObjectManager::Finalize()
 {
 	// 解放処理
@@ -164,7 +160,6 @@ void NetWorkObjectManager::Finalize()
 	WSACleanup();
 }
 
-//オブジェクトのデータの更新
 void  NetWorkObjectManager::UpdateObjectsData(ObjectDataForSocket od)
 {
 	int id = od.unique_id;
@@ -179,7 +174,7 @@ void  NetWorkObjectManager::UpdateObjectsData(ObjectDataForSocket od)
 		//新しくエントリーする
 		printf("オブジェクトID[%d]がエントリーしました\n", id);
 		NetWorkObjectData* member_data = &m_network_objects_data[id];
-		Player* p;
+		NetWorkObjectBase* p;
 		switch (od.object_id)
 		{
 		case eId_Player:
@@ -201,7 +196,6 @@ void  NetWorkObjectManager::UpdateObjectsData(ObjectDataForSocket od)
 	}
 }
 
-//保存したデータの送信
 void NetWorkObjectManager::ReceiveMembersData()
 {
 	while (1) {
@@ -228,7 +222,6 @@ void NetWorkObjectManager::ReceiveMembersData()
 	}
 }
 
-//オブジェクトを所持しているオーナーによる更新処理（全体）
 void NetWorkObjectManager::UpdateAllByOwner()
 {
 
@@ -239,6 +232,10 @@ void NetWorkObjectManager::UpdateAllByOwner()
 		auto obj = (*itr).second.object_pointer;
 		if (obj->GetObjectData()->owner_id == m_unique_id) {
 			
+			for (int i = 0; i < CInput::eKeyMax; i++) {
+				obj->GetObjectData()->key[i] = 0;
+			}
+
 			obj->UpdateByOwner();
 			
 			NetWorkObjectData tmp_data;
@@ -257,7 +254,6 @@ void NetWorkObjectManager::UpdateAllByOwner()
 	
 }
 
-//オブジェクトデータを追加する処理
 void NetWorkObjectManager::AddObjectData(int object_id,CVector3D pos)
 {
 	int id = rand();
@@ -268,7 +264,7 @@ void NetWorkObjectManager::AddObjectData(int object_id,CVector3D pos)
 	member_data->object_data.owner_id = m_unique_id;
 	member_data->object_data.object_id = object_id;
 	
-	Player* p;
+	NetWorkObjectBase* p;
 	switch (object_id) {
 	case eId_Player:
 		p = new Player(pos, &member_data->object_data);
@@ -282,7 +278,17 @@ void NetWorkObjectManager::AddObjectData(int object_id,CVector3D pos)
 	
 }
 
-//オブジェクトデータを送る処理
+void NetWorkObjectManager::RemoveObjectData()
+{
+	
+
+}
+
+void NetWorkObjectManager::RemoveObjectDataAll()
+{
+
+}
+
 void NetWorkObjectManager::SendToObjectsData(std::map<int, NetWorkObjectData> od)
 {
 
@@ -317,5 +323,9 @@ NetWorkObjectBase::~NetWorkObjectBase()
 }
 
 void NetWorkObjectBase::UpdateByOwner()
+{
+}
+
+void NetWorkObjectBase::SetKillFromNetWorkDataList()
 {
 }

@@ -119,6 +119,10 @@ void Init(void)
 	if (NetWorkObjectManager::Instance().m_mode == NetWorkObjectManager::E_MODE::ECLIENT) {
 
 		NetWorkObjectManager::Instance().AddObjectData(eId_Player, CVector3D(0, 0, -10));
+		//ƒJƒƒ‰‰Šú‰»
+		CCamera::GetCamera()->LookAt(CVector3D(0, 30, -50),
+			CVector3D(0, 0, 30),
+			CVector3D(0.0, 1.0, 0.0));
 	}
 }
 

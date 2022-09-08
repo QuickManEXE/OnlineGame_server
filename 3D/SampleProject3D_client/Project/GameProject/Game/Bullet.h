@@ -1,5 +1,7 @@
 #pragma once
 #include "../Base/Base.h"
+#include"../NetWorkObjectBase/NetWorkObjectBase.h"
+
 class Bullet : public Base {
 	float m_speed;
 	int m_cnt;
