@@ -23,7 +23,7 @@ void Enemy::Update() {
 		}
 	} else if (m_cnt < 320) {
 		if (m_cnt % 30 == 0) {
-			Base::Add(new Bullet(m_pos, m_rot.y,0.1f, eId_Enemy_Bullet));
+			//Base::Add(new Bullet(m_pos, m_rot.y,0.1f, eId_Enemy_Bullet));
 		}
 	} else if(m_cnt>380){
 		m_cnt = 0;

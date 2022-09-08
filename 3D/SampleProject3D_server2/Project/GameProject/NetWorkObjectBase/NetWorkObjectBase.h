@@ -80,6 +80,8 @@ public:
 	void SendToObjectsData(std::map<int, NetWorkObjectData> od);//自分のデータを送る
 	void UpdateAllByOwner();//自分の所有しているオブジェクトの更新処理を呼び出す
 	void AddObjectData(int object_id, CVector3D pos);//ネットワークオブジェクトの追加
+	void RemoveObjectData();
+	void RemoveObjectDataAll();
 	std::map<int, NetWorkObjectData> GetObjectsData() {
 		return m_network_objects_data;
 	};
@@ -90,6 +92,8 @@ class NetWorkObjectBase : public Base{
 private:
 
 	NetWorkObjectManager::ObjectDataForSocket* m_object_data;//ネットワーク通信に必要なデータ
+
+	bool m_kill;//削除するかどうかのフラグ
 
 public:
 	NetWorkObjectBase(int id,NetWorkObjectManager::ObjectDataForSocket* od);
@@ -103,5 +107,6 @@ public:
 	void SetObjectData(NetWorkObjectManager::ObjectDataForSocket* od) {
 		m_object_data = od;
 	}
+	void SetKillFromNetWorkDataList();
 };
 

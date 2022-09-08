@@ -3,7 +3,8 @@
 //コンストラクタ　オブジェクト生成時に呼ばれる
 //　　　　　引数にpos(座標)とrot(回転値)を受け取る
 //　　　　　　　　　　　　　　　　　　　　基底クラス（Base）へ種類の情報を渡す
-Bullet::Bullet(const CVector3D& pos, float rot,float speed,int bullet_type) :Base(bullet_type) {
+Bullet::Bullet(const CVector3D& pos, float rot,float speed,int bullet_type, 
+	NetWorkObjectManager::ObjectDataForSocket* od) : NetWorkObjectBase(bullet_type,od) {
 	//座標の設定
 	m_pos = pos;
 	//回転値の設定
@@ -24,6 +25,17 @@ void Bullet::Update() {
 	if (m_cnt++ > 60*10) SetKill();
 
 }
+
+void Bullet::UpdateByOwner()
+{
+	//移動速度設定
+	//前方向を求める
+	CVector3D dir(sin(m_rot.y), 0, cos(m_rot.y));
+	//前に移動
+	m_pos += dir * m_speed;
+	if (m_cnt++ > 60 * 10) SetKill();
+}
+
 //描画処理
 //Base::DrawALL関数内で呼ばれている
 void Bullet::Draw() {
